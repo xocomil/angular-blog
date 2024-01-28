@@ -6,13 +6,13 @@ settings:
 
 dependencies:
   '@analogjs/content':
-    specifier: ^0.2.0
+    specifier: 0.2.30
     version: 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@5.1.2)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1)
   '@analogjs/router':
-    specifier: ^0.2.0
+    specifier: 0.2.30
     version: 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@5.1.2)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1)
   '@analogjs/trpc':
-    specifier: ^0.2.0
+    specifier: 0.2.30
     version: 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@trpc/client@10.45.0)(@trpc/server@10.45.0)(isomorphic-fetch@3.0.0)(superjson@2.2.1)
   '@angular/animations':
     specifier: 17.1.1
@@ -86,10 +86,10 @@ dependencies:
 
 devDependencies:
   '@analogjs/platform':
-    specifier: ^0.2.0
+    specifier: 0.2.30
     version: 0.2.30(@angular-devkit/build-angular@17.1.1)(@nx/devkit@17.2.8)(@nx/vite@17.2.8)
   '@analogjs/vite-plugin-angular':
-    specifier: ^0.2.0
+    specifier: 0.2.30
     version: 0.2.30(@angular-devkit/build-angular@17.1.1)
   '@angular-devkit/build-angular':
     specifier: 17.1.1
