@@ -1,0 +1,38 @@
+<script lang="ts">
+import { EventEmitter, ViewChild } from '@angular/core';
+  import { Theme, themes } from '../../../themes';
+
+  const themeSelected = new EventEmitter<Theme>();
+
+  defineMetadata({
+    host: {
+      class: "w-full h-16 bg-blue-500 flex p-4 items-center text-white"
+    },
+    exposes: [themes],
+    queries: {
+      select: new ViewChild('select')
+    }
+  });
+
+  let select: ElementRef<HTMLSelectElement>;
+</script>
+
+<template lang="md">
+  *Markdown* is **supported**!
+
+  ```ts
+  console.log('Hello, world!');
+  ```
+
+  <div class="flex-1 justify-center">
+    <h1>Welcome</h1>
+  </div>
+  <div class="flex-none">
+    <select #select class="select select-bordered select-sm" (change)="themSelected.emit">
+      <option value="" disabled>Theme</option>
+      @for (theme of themes; track theme) {
+        <option [value]="theme">{{theme}}</option>
+      }
+    </select>
+  </div>
+</template>

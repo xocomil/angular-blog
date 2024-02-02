@@ -25,6 +25,11 @@ export default defineConfig(({ mode }) => {
             },
           },
         },
+        vite: {
+          experimental: {
+            supportAnalogFormat: true
+          }
+        },
       }),
 
       nxViteTsPaths(),
