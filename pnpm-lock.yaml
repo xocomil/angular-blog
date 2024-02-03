@@ -7,10 +7,10 @@ settings:
 dependencies:
   '@analogjs/content':
     specifier: 0.2.30
-    version: 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@5.1.2)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1)
+    version: 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.2.0)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1)
   '@analogjs/router':
     specifier: 0.2.30
-    version: 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@5.1.2)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1)
+    version: 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.2.0)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1)
   '@analogjs/trpc':
     specifier: 0.2.30
     version: 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@trpc/client@10.45.0)(@trpc/server@10.45.0)(isomorphic-fetch@3.0.0)(superjson@2.2.1)
@@ -54,14 +54,14 @@ dependencies:
     specifier: ^3.0.0
     version: 3.0.0
   marked:
-    specifier: ^5.1.2
-    version: 5.1.2
+    specifier: ^11.0.0
+    version: 11.2.0
   marked-gfm-heading-id:
     specifier: ^3.1.2
-    version: 3.1.2(marked@5.1.2)
+    version: 3.1.2(marked@11.2.0)
   marked-highlight:
     specifier: ^2.1.0
-    version: 2.1.0(marked@5.1.2)
+    version: 2.1.0(marked@11.2.0)
   mermaid:
     specifier: ^10.7.0
     version: 10.7.0
@@ -218,7 +218,7 @@ packages:
       '@jridgewell/trace-mapping': 0.3.22
     dev: true
 
-  /@analogjs/content@0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@5.1.2)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1):
+  /@analogjs/content@0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.2.0)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1):
     resolution: {integrity: sha512-RUayZ6pIdAD8Uq4fV0mAboJmY2nQRZYJ07PR5cVJvOluRz3K9EbENR93Pv64FHhkWHy0Srdu7YcOlk0ZUqikCg==}
     peerDependencies:
       '@angular/common': ^15.0.0 || >=16.0.0
@@ -238,9 +238,9 @@ packages:
       '@angular/platform-browser': 17.1.1(@angular/animations@17.1.1)(@angular/common@17.1.1)(@angular/core@17.1.1)
       '@angular/router': 17.1.1(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(rxjs@7.8.1)
       front-matter: 4.0.2
-      marked: 5.1.2
-      marked-gfm-heading-id: 3.1.2(marked@5.1.2)
-      marked-highlight: 2.1.0(marked@5.1.2)
+      marked: 11.2.0
+      marked-gfm-heading-id: 3.1.2(marked@11.2.0)
+      marked-highlight: 2.1.0(marked@11.2.0)
       mermaid: 10.7.0
       prismjs: 1.29.0
       rxjs: 7.8.1
@@ -277,7 +277,7 @@ packages:
       - xml2js
     dev: true
 
-  /@analogjs/router@0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@5.1.2)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1):
+  /@analogjs/router@0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.2.0)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1):
     resolution: {integrity: sha512-ewuxkA6GY/2XWbWff4erc4v33wBzSjkn4WFWiKS2e7a4j5zEqJySGHwIqpmrBy6bUUGrBiHNd9SSlXZu+Rr85g==}
     peerDependencies:
       '@angular/core': ^15.0.0 || >=16.0.0
@@ -287,7 +287,7 @@ packages:
       '@angular/router': 17.1.1(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(rxjs@7.8.1)
       tslib: 2.6.2
     optionalDependencies:
-      '@analogjs/content': 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@5.1.2)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1)
+      '@analogjs/content': 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.2.0)(mermaid@10.7.0)(prismjs@1.29.0)(rxjs@7.8.1)
     transitivePeerDependencies:
       - '@angular/common'
       - '@angular/platform-browser'
@@ -11065,26 +11065,26 @@ packages:
       tmpl: 1.0.5
     dev: true
 
-  /marked-gfm-heading-id@3.1.2(marked@5.1.2):
+  /marked-gfm-heading-id@3.1.2(marked@11.2.0):
     resolution: {integrity: sha512-SdIZvhNxDgndFkDa2WRcFP4ahYm6k6hoHdTCN+fD7HRiI/R3Eimcw/Yl7ikQ+0KUuDpi75NnYQiThZnZsNr9Dg==}
     peerDependencies:
       marked: '>=4 <12'
     dependencies:
       github-slugger: 2.0.0
-      marked: 5.1.2
+      marked: 11.2.0
     dev: false
 
-  /marked-highlight@2.1.0(marked@5.1.2):
+  /marked-highlight@2.1.0(marked@11.2.0):
     resolution: {integrity: sha512-peBvgGZZqUw074Vy/N8Y7/6JQhSnR54/T0Ozq2/fAIBzcYfVfExFdQJptIhQxreR1elpwvJRrqhp6S/Prk8prA==}
     peerDependencies:
       marked: '>=4 <12'
     dependencies:
-      marked: 5.1.2
+      marked: 11.2.0
     dev: false
 
-  /marked@5.1.2:
-    resolution: {integrity: sha512-ahRPGXJpjMjwSOlBoTMZAK7ATXkli5qCPxZ21TG44rx1KEo44bii4ekgTDQPNRQ4Kh7JMb9Ub1PVk1NxRSsorg==}
-    engines: {node: '>= 16'}
+  /marked@11.2.0:
+    resolution: {integrity: sha512-HR0m3bvu0jAPYiIvLUUQtdg1g6D247//lvcekpHO1WMvbwDlwSkZAX9Lw4F4YHE1T0HaaNve0tuAWuV1UJ6vtw==}
+    engines: {node: '>= 18'}
     hasBin: true
     dev: false
 
