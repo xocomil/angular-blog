@@ -1,0 +1,15 @@
+<script lang="ts">
+  import Header from './(home)/header.component.analog';
+
+  defineMetadata({
+    host: {
+      class: 'block'
+    }
+  })
+</script>
+
+<template>
+  <Header></Header>
+
+  <h1>My Blog!</h1>
+</template>
