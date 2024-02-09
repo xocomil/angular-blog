@@ -1,38 +1,40 @@
 <script lang="ts">
-import { EventEmitter, ViewChild } from '@angular/core';
-  import { Theme, themes } from '../../../themes';
-
-  const themeSelected = new EventEmitter<Theme>();
+import { afterNextRender, inject } from '@angular/core';
+import { Theme, themes } from '../../../themes';
+import { ThemeStore } from '../../data-access/theme.store';
 
   defineMetadata({
     host: {
       class: "w-full h-16 bg-blue-500 flex p-4 items-center text-white"
     },
     exposes: [themes],
-    queries: {
-      select: new ViewChild('select')
-    }
   });
 
-  let select: ElementRef<HTMLSelectElement>;
+  const themeStore = inject(ThemeStore);
+
+  function themeSelected(event: Event) {
+    console.log('themeSelected', event);
+
+    themeStore.setTheme(event.target.value as Theme);
+  }
+
+  afterNextRender(() => console.log('afterNextRender', themeStore.theme()));
 </script>
 
-<template lang="md">
-  *Markdown* is **supported**!
-
-  ```ts
-  console.log('Hello, world!');
-  ```
-
+<template>
   <div class="flex-1 justify-center">
     <h1>Welcome</h1>
   </div>
-  <div class="flex-none">
-    <select #select class="select select-bordered select-sm" (change)="themSelected.emit">
+  <div class="flex-none" [attr.data-theme]="themeStore.theme()">
+    <select
+      class="select select-bordered select-sm"
+      (change)="themeSelected($event)"
+    >
       <option value="" disabled>Theme</option>
       @for (theme of themes; track theme) {
-        <option [value]="theme">{{theme}}</option>
+        <option [value]="theme" [selected]="theme === themeStore.theme()">{{theme}}</option>
       }
     </select>
   </div>
+  <pre>{{themeStore.theme()}}</pre>
 </template>
