@@ -7,3 +7,9 @@ body {
   display: block;
   height: 100%;
 }
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold;
+  }
+}
