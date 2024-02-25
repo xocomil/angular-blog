@@ -59,7 +59,9 @@
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
-        "lintFilePatterns": ["./angular-blog/**/*.{ts,html}"]
+        "lintFilePatterns": [
+          "./angular-blog/**/*.{ts,html}"
+        ]
       }
     }
   },
