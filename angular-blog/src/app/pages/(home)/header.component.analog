@@ -5,7 +5,7 @@ import { ThemeStore } from '../../data-access/theme.store';
 
   defineMetadata({
     host: {
-      class: "w-full h-16 bg-blue-500 flex p-4 items-center text-white"
+      class: "w-full h-16 bg-primary flex p-4 items-center text-primary-content"
     },
     exposes: [themes],
   });
@@ -25,9 +25,9 @@ import { ThemeStore } from '../../data-access/theme.store';
   <div class="flex-1 justify-center">
     <h1>Welcome</h1>
   </div>
-  <div class="flex-none" [attr.data-theme]="themeStore.theme()">
+  <div class="flex-none">
     <select
-      class="select select-bordered select-sm"
+      class="select select-bordered select-sm text-base-content"
       (change)="themeSelected($event)"
     >
       <option value="" disabled>Theme</option>
@@ -36,5 +36,4 @@ import { ThemeStore } from '../../data-access/theme.store';
       }
     </select>
   </div>
-  <pre>{{themeStore.theme()}}</pre>
 </template>
