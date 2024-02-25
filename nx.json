@@ -9,7 +9,7 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
-    "lint": {
+    "@nx/eslint:lint": {
       "cache": true,
       "inputs": [
         "default",
@@ -17,9 +17,6 @@
         "{workspaceRoot}/.eslintignore",
         "{workspaceRoot}/eslint.config.js"
       ]
-    },
-    "e2e": {
-      "inputs": ["default", "^production"]
     }
   },
   "namedInputs": {
