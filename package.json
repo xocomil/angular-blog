@@ -5,9 +5,9 @@
   "scripts": {},
   "private": true,
   "dependencies": {
-    "@analogjs/content": "0.2.39",
-    "@analogjs/router": "0.2.39",
-    "@analogjs/trpc": "0.2.39",
+    "@analogjs/content": "0.2.40",
+    "@analogjs/router": "0.2.40",
+    "@analogjs/trpc": "0.2.40",
     "@angular/animations": "17.2.2",
     "@angular/common": "17.2.2",
     "@angular/compiler": "17.2.2",
@@ -34,8 +34,8 @@
     "zone.js": "~0.14.4"
   },
   "devDependencies": {
-    "@analogjs/platform": "0.2.39",
-    "@analogjs/vite-plugin-angular": "0.2.39",
+    "@analogjs/platform": "0.2.40",
+    "@analogjs/vite-plugin-angular": "0.2.40",
     "@angular-devkit/build-angular": "17.2.1",
     "@angular-devkit/core": "17.2.1",
     "@angular-devkit/schematics": "17.2.1",
@@ -76,3 +76,4 @@
     "node": "18.19.0"
   }
 }
+
