@@ -1,15 +1,15 @@
 <script lang="ts">
-  import Header from './(home)/header.component.analog';
+  import Header from './(home)/header.component.analog' with {analog: 'imports'};
+  import ArticleContainer from './(home)/article-container.component.analog' with {analog: 'imports'};
 
   defineMetadata({
     host: {
-      class: 'block'
+      class: 'flex flex-col h-full w-full max-h-full overflow-hidden'
     }
   })
 </script>
 
 <template>
-  <Header></Header>
-
-  <h1>My Blog!</h1>
+  <Header class="flex-none"></Header>
+  <ArticleContainer></ArticleContainer>
 </template>

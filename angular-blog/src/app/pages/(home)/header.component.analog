@@ -1,7 +1,8 @@
 <script lang="ts">
 import { afterNextRender, inject } from '@angular/core';
-import { Theme, themes } from '../../../themes';
-import { ThemeStore } from '../../data-access/theme.store';
+import { Theme } from '../../../themes';
+import {themes} from '../../../themes' with {analog: 'exposes'};
+import { ThemeStore } from '../../data-access/theme.store' with {analog: 'imports'};
 
   defineMetadata({
     host: {
