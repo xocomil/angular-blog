@@ -1,0 +1,35 @@
+<script lang="ts">
+  import MainArticle from './main-article.component.analog' with {analog: 'imports'};
+
+  defineMetadata({
+    host: {
+      class: 'grid grid-cols-2 grid-rows-[33%] auto-rows-[20%] gap-4 px-16 pt-4 h-full w-full max-h-full overflow-y-auto'
+    }
+  })
+</script>
+
+<template>
+  <MainArticle class="block border-2 border-secondary/[.65] col-span-2"></MainArticle>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+  <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
+</template>

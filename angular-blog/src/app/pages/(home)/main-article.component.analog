@@ -1,0 +1,16 @@
+<template>
+  <h1>This is my main article.</h1>
+
+  <div class="block h-16 w-16 bg-[--darker-color]"></div>
+  <div class="block h-16 w-16 bg-[--middle-color]"></div>
+  <div class="block h-16 w-16 bg-[--lighter-color]"></div>
+</template>
+
+<style>
+:host {
+  --middle-color: hsl(240 100 50);
+  --lighter-color: hsl(240 100 75);
+  --darker-color: hsl(240 100 25);
+}
+
+</style>
