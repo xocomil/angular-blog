@@ -1,16 +1,24 @@
-<template>
-  <h1>This is my main article.</h1>
+<script lang="ts">
+  defineMetadata({
+    host: {
+      class: 'grid'
+    }
+  })
+</script>
 
-  <div class="block h-16 w-16 bg-[--darker-color]"></div>
-  <div class="block h-16 w-16 bg-[--middle-color]"></div>
-  <div class="block h-16 w-16 bg-[--lighter-color]"></div>
+<template>
+  <div class="row-span-2">
+    <img src="https://picsum.photos/seed/picsum/250/250"
+         class="m-auto max-h-full" />
+  </div>
+  <div class="article-title max-w-full min-w-full pl-0 p-2">
+    <h3 class="text-center truncate">A Very Long Blog Title to Test How Wrapping Works Plus a Lot of!!!!!!!!!!!!!!111111111!!!!!!!!!!</h3>
+  </div>
 </template>
 
 <style>
-:host {
-  --middle-color: hsl(240 100 50);
-  --lighter-color: hsl(240 100 75);
-  --darker-color: hsl(240 100 25);
-}
-
+  :host {
+    grid-template-columns: 25% 1fr;
+    grid-template-rows: min-content 1fr;
+  }
 </style>
