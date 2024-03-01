@@ -54,7 +54,7 @@
     "@schematics/angular": "17.2.2",
     "@swc-node/register": "1.8.0",
     "@swc/core": "~1.4.2",
-    "@types/node": "^20.11.21",
+    "@types/node": "^20.11.24",
     "@typescript-eslint/eslint-plugin": "7.1.0",
     "@typescript-eslint/parser": "7.1.0",
     "autoprefixer": "^10.4.17",
