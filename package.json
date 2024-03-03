@@ -9,6 +9,7 @@
     "@analogjs/router": "0.2.41",
     "@analogjs/trpc": "0.2.41",
     "@angular/animations": "17.2.3",
+    "@angular/cdk": "^17.2.1",
     "@angular/common": "17.2.3",
     "@angular/compiler": "17.2.3",
     "@angular/core": "17.2.3",
@@ -76,4 +77,3 @@
     "node": "18.19.0"
   }
 }
-
