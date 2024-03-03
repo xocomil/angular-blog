@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <MainArticle class="block border-2 border-secondary/[.65] col-span-2"></MainArticle>
+  <MainArticle class="border-2 border-secondary/[.65] col-span-2"></MainArticle>
   <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
   <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
   <h1 class="border-accent border-2 flex-grow">My Blog!</h1>
