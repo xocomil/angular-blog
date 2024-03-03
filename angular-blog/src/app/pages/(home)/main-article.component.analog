@@ -1,24 +1,59 @@
 <script lang="ts">
+import { inject, signal } from '@angular/core';
+  import { BreakpointService } from '../../services/breakpoint.service';
+  import { createTestArticle } from './models/article.model';
+
+  const breakpointService = inject(BreakpointService);
+  const article = signal(createTestArticle());
+
   defineMetadata({
     host: {
       class: 'grid'
-    }
+    },
+    providers: [BreakpointService]
   })
 </script>
 
 <template>
-  <div class="row-span-2">
-    <img src="https://picsum.photos/seed/picsum/250/250"
-         class="m-auto max-h-full" />
+  @if(!breakpointService.isSmallScreen()) {
+    <div class="image overflow-hidden">
+      <img src="https://picsum.photos/seed/picsum/250/250"
+           class="w-[var(--image-size)] h-[var(--image-size)] max-w-[var(--image-size)]" />
+    </div>
+  }
+  <div class="title col-span-2 md:col-span-1 max-w-full min-w-full p-2">
+    <h3 class="text-center truncate">{{ article().title }}</h3>
   </div>
-  <div class="article-title max-w-full min-w-full pl-0 p-2">
-    <h3 class="text-center truncate">A Very Long Blog Title to Test How Wrapping Works Plus a Lot of!!!!!!!!!!!!!!111111111!!!!!!!!!!</h3>
+  <div class="content p-2">
+    <hr class="text-primary/50">
+    <span class="text-neutral-content text-xs italic">{{ article().date }}</span> <br>
+    <p>{{ article().content }}</p>
   </div>
 </template>
 
 <style>
   :host {
-    grid-template-columns: 25% 1fr;
+    --image-size: 250px;
+
+    @media screen(md) {
+      grid-template-areas: "image title"
+                           "image content";
+      grid-template-columns: var(--image-size) 1fr;
+    }
+
+    grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr;
+    grid-template-areas: "title"
+                         "content";
+
+    .image {
+      grid-area: image;
+    }
+    .title {
+      grid-area: title;
+    }
+    .content {
+      grid-area: content;
+    }
   }
 </style>

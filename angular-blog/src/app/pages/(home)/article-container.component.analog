@@ -3,7 +3,7 @@
 
   defineMetadata({
     host: {
-      class: 'grid grid-cols-2 grid-rows-[33%] auto-rows-[20%] gap-4 px-16 pt-4 h-full w-full max-h-full overflow-y-auto'
+      class: 'grid grid-cols-2 grid-rows-[33%] auto-rows-[20%] gap-4 px-4 md:px-16 pt-4 h-full w-full max-h-full overflow-y-auto'
     }
   })
 </script>

@@ -9,6 +9,7 @@
     "@analogjs/router": "0.2.41",
     "@analogjs/trpc": "0.2.41",
     "@angular/animations": "17.2.3",
+    "@angular/cdk": "^17.2.1",
     "@angular/common": "17.2.3",
     "@angular/compiler": "17.2.3",
     "@angular/core": "17.2.3",
@@ -42,6 +43,7 @@
     "@angular/cli": "17.2.2",
     "@angular/compiler-cli": "17.2.3",
     "@angular/language-service": "17.2.3",
+    "@faker-js/faker": "^8.4.1",
     "@ngrx/eslint-plugin": "17.1.1",
     "@nx/angular": "18.0.6",
     "@nx/cypress": "18.0.6",
@@ -66,6 +68,8 @@
     "nx": "18.0.6",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
+    "prettier-plugin-organize-attributes": "^1.0.0",
+    "prettier-plugin-organize-imports": "^3.2.4",
     "tailwindcss": "^3.4.1",
     "typescript": "5.3.3",
     "vite": "5.1.4",
@@ -76,4 +80,3 @@
     "node": "18.19.0"
   }
 }
-
