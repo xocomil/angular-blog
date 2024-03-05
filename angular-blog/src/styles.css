@@ -12,8 +12,18 @@ body {
   h1 {
     @apply text-4xl font-bold;
   }
+
   h3 {
     @apply text-2xl font-bold;
+  }
+
+  @media (hover: hover) {
+    @supports (color:color-mix(in oklab,black,black)) {
+      .darken-article:hover {
+        background: color-mix(in oklab, theme(colors.base-100) 90%, black);
+        color: color-mix(in oklab, theme(colors.base-content) 60%, theme(colors.secondary));
+      }
+    }
   }
 }
 

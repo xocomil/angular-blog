@@ -8,7 +8,7 @@ import { inject, signal } from '@angular/core';
 
   defineMetadata({
     host: {
-      class: 'grid gap-4'
+      class: 'grid gap-4 darken-article cursor-pointer transition hover:scale-105 active:hover:scale-95'
     },
     providers: [BreakpointService]
   })
@@ -21,11 +21,11 @@ import { inject, signal } from '@angular/core';
            class="w-[var(--image-size)] h-[var(--image-size)] max-w-[var(--image-size)]" />
     </div>
   }
-  <div class="title col-span-2 md:col-span-1 max-w-full min-w-full pr-4">
-    <h3 class="text-center truncate">{{ article().title }}</h3>
+  <div class="title col-span-2 md:col-span-1 max-w-full min-w-full md:pr-4">
+    <h3 [title]="article().title" class="text-center truncate">{{ article().title }}</h3>
   </div>
-  <div class="content pr-4 flex flex-col max-h-full overflow-hidden">
-    <div class="text-neutral-content text-xs italic">{{ article().date }}</div>
+  <div class="content md:pr-4 flex flex-col max-h-full overflow-hidden">
+    <div class="opacity-75 text-xs italic">{{ article().date }}</div>
     <div class="flex-1 main-article-blurb relative overflow-hidden">
       <p>{{ article().content }}</p>
       <div class="main-article-gradient absolute bottom-0 left-0 max-h-14 min-h-14 min-w-full z-10"></div>
