@@ -8,7 +8,7 @@ import { inject, signal } from '@angular/core';
 
   defineMetadata({
     host: {
-      class: 'grid'
+      class: 'grid gap-4 darken-article cursor-pointer transition hover:scale-105 active:hover:scale-95'
     },
     providers: [BreakpointService]
   })
@@ -17,17 +17,19 @@ import { inject, signal } from '@angular/core';
 <template>
   @if(!breakpointService.isSmallScreen()) {
     <div class="image overflow-hidden">
-      <img src="https://picsum.photos/seed/picsum/250/250"
+      <img src="https://picsum.photos/seed/jason/250/250"
            class="w-[var(--image-size)] h-[var(--image-size)] max-w-[var(--image-size)]" />
     </div>
   }
-  <div class="title col-span-2 md:col-span-1 max-w-full min-w-full p-2">
-    <h3 class="text-center truncate">{{ article().title }}</h3>
+  <div class="title col-span-2 md:col-span-1 max-w-full min-w-full md:pr-4">
+    <h3 [title]="article().title" class="text-center truncate">{{ article().title }}</h3>
   </div>
-  <div class="content p-2">
-    <hr class="text-primary/50">
-    <span class="text-neutral-content text-xs italic">{{ article().date }}</span> <br>
-    <p>{{ article().content }}</p>
+  <div class="content md:pr-4 flex flex-col max-h-full overflow-hidden">
+    <div class="opacity-75 text-xs italic">{{ article().date }}</div>
+    <div class="flex-1 main-article-blurb relative overflow-hidden">
+      <p>{{ article().content }}</p>
+      <div class="main-article-gradient absolute bottom-0 left-0 max-h-14 min-h-14 min-w-full z-10"></div>
+    </div>
   </div>
 </template>
 
@@ -54,6 +56,21 @@ import { inject, signal } from '@angular/core';
     }
     .content {
       grid-area: content;
+    }
+    .main-article-blurb {
+      container-type: size;
+      container-name: main-blurb;
+    }
+    .main-article-gradient {
+      background: linear-gradient(180deg,  theme(colors.base-100 / 0%) 0%, theme(colors.base-100/ 50%) 100%);
+      pointer-events: none;
+    }
+
+    @container main-blurb (min-height: theme(height.20)) {
+      .main-article-gradient {
+        height: theme(height.20);
+        background: linear-gradient(180deg,  theme(colors.base-100 / 20%) 0%, theme(colors.base-100/ 85%) 100%);
+      }
     }
   }
 </style>

@@ -14,12 +14,16 @@ export function createTestArticle({
   return {
     title:
       title ??
-      faker.word.words({
-        count: {
-          min: 5,
-          max: 20,
-        },
-      }),
+      faker.word
+        .words({
+          count: {
+            min: 5,
+            max: 20,
+          },
+        })
+        .split(' ')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' '),
     content: content ?? faker.lorem.paragraph({ min: 10, max: 40 }),
     date: date ?? faker.date.recent({ days: 30 }),
   };
