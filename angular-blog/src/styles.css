@@ -20,8 +20,11 @@ body {
   @media (hover: hover) {
     @supports (color:color-mix(in oklab,black,black)) {
       .darken-article:hover {
-        background: color-mix(in oklab, theme(colors.base-100) 90%, black);
         color: color-mix(in oklab, theme(colors.base-content) 60%, theme(colors.secondary));
+      }
+
+      .darken-article-accent:hover {
+        color: color-mix(in oklab, theme(colors.base-content) 60%, theme(colors.accent));
       }
     }
   }
