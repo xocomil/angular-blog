@@ -1,7 +1,11 @@
 <script lang="ts">
-  import { input } from '@angular/core';
+import { computed, inject, input } from '@angular/core';
+  import { DateTimeHelper } from '@angular-blog/dates';
 
   const article = input.required<Article>();
+  const dateTimeHelper = inject(DateTimeHelper);
+
+  const articleDate = computed(() => dateTimeHelper.toBlogArticleDate(article().date));
 
   defineMetadata({
     host: {
@@ -14,7 +18,7 @@
   <div class="title max-w-full min-w-full">
     <h3 [title]="article().title" class="text-center truncate">{{ article().title }}</h3>
   </div>
-  <div class="opacity-75 text-xs italic">{{ article().date }}</div>
+  <div class="opacity-75 text-xs italic">{{ articleDate() }}</div>
   <div class="flex-1 article-blurb relative overflow-hidden">
     <p>{{ article().content }}</p>
     <div class="article-gradient absolute bottom-0 left-0 max-h-8 min-h-8 min-w-full z-10"></div>
