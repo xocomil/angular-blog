@@ -1,0 +1,39 @@
+<script lang="ts">
+  import { input } from '@angular/core';
+
+  const article = input.required<Article>();
+
+  defineMetadata({
+    host: {
+      class: 'flex flex-col flex-grow darken-article-accent cursor-pointer transition hover:scale-105 active:hover:scale-95'
+    }
+  })
+</script>
+
+<template>
+  <div class="title max-w-full min-w-full">
+    <h3 [title]="article().title" class="text-center truncate">{{ article().title }}</h3>
+  </div>
+  <div class="opacity-75 text-xs italic">{{ article().date }}</div>
+  <div class="flex-1 article-blurb relative overflow-hidden">
+    <p>{{ article().content }}</p>
+    <div class="article-gradient absolute bottom-0 left-0 max-h-8 min-h-8 min-w-full z-10"></div>
+  </div>
+</template>
+
+<style>
+  .article-blurb {
+    container-type: size;
+    container-name: blurb;
+  }
+  .article-gradient {
+    background: linear-gradient(180deg, theme(colors.base-100 / 20%) 0%,theme(colors.base-100 / 70%) 100%);
+    pointer-events: none;
+  }
+  @container blurb (min-height: theme(height.16)) {
+    .article-gradient {
+      height: theme(height.12);
+      background: linear-gradient(180deg, theme(colors.base-100 / 40%) 0%, theme(colors.base-100 / 95%) 100%);
+    }
+  }
+</style>

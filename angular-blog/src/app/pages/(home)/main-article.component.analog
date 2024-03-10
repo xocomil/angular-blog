@@ -68,7 +68,7 @@ import { inject, signal } from '@angular/core';
 
     @container main-blurb (min-height: theme(height.20)) {
       .main-article-gradient {
-        height: theme(height.20);
+        height: theme(height.16);
         background: linear-gradient(180deg,  theme(colors.base-100 / 20%) 0%, theme(colors.base-100/ 85%) 100%);
       }
     }
