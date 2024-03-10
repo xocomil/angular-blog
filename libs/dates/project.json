@@ -1,0 +1,13 @@
+{
+  "name": "dates",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/dates/src",
+  "prefix": "angular-blog",
+  "tags": ["type:library", "scope:internal"],
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

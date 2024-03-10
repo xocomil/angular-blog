@@ -1,10 +1,14 @@
 <script lang="ts">
-import { inject, signal } from '@angular/core';
+  import { DateTimeHelper } from '@angular-blog/dates';
+  import { computed, inject, signal } from '@angular/core';
   import { BreakpointService } from '../../services/breakpoint.service';
   import { createTestArticle } from './models/article.model';
 
   const breakpointService = inject(BreakpointService);
   const article = signal(createTestArticle());
+  const dateTimeHelper = inject(DateTimeHelper);
+
+  const articleDate = computed(() => dateTimeHelper.toBlogArticleDate(article().date));
 
   defineMetadata({
     host: {
@@ -25,7 +29,7 @@ import { inject, signal } from '@angular/core';
     <h3 [title]="article().title" class="text-center truncate">{{ article().title }}</h3>
   </div>
   <div class="content md:pr-4 flex flex-col max-h-full overflow-hidden">
-    <div class="opacity-75 text-xs italic">{{ article().date }}</div>
+    <div class="opacity-75 text-xs italic">{{ articleDate() }}</div>
     <div class="flex-1 main-article-blurb relative overflow-hidden">
       <p>{{ article().content }}</p>
       <div class="main-article-gradient absolute bottom-0 left-0 max-h-14 min-h-14 min-w-full z-10"></div>
