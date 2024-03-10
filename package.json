@@ -55,13 +55,13 @@
     "@nx/workspace": "18.0.8",
     "@schematics/angular": "17.2.3",
     "@swc-node/register": "1.9.0",
-    "@swc/core": "~1.4.5",
+    "@swc/core": "~1.4.6",
     "@types/node": "^20.11.25",
     "@typescript-eslint/eslint-plugin": "7.1.1",
     "@typescript-eslint/parser": "7.1.1",
     "autoprefixer": "^10.4.18",
     "cypress": "^13.6.6",
-    "daisyui": "^4.7.2",
+    "daisyui": "^4.7.3",
     "eslint": "~8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "jsdom": "^24.0.0",
@@ -80,4 +80,3 @@
     "node": "20.11.1"
   }
 }
-
