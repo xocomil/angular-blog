@@ -4,11 +4,12 @@
   import {createTestArticle} from './models/article.model';
   import {faker} from '@faker-js/faker';
 
-  const articles = Array.from({length: faker.number.int({min: 5, max: 12})}, createTestArticle);
+  const articles = Array.from({length: faker.number.int({min: 3, max: 16})}, createTestArticle);
+  // const articles = Array.from({length: 3}, createTestArticle);
 
   defineMetadata({
     host: {
-      class: 'grid grid-cols-1 md:grid-cols-2 auto-rows-[33%] md:grid-rows-[33%] md:auto-rows-[20%] gap-4 px-4 md:px-16 pt-4 h-full w-full max-h-full overflow-y-auto'
+      class: 'grid grid-cols-1 md:grid-cols-2 auto-rows-[33%] md:grid-rows-[33%] md:auto-rows-[20%] gap-4 px-4 pb-4 md:px-12 pt-4 h-full w-full max-h-full overflow-y-auto stable-gutters'
     }
   })
 </script>

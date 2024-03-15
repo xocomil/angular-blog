@@ -1,5 +1,5 @@
 <script lang="ts">
-import { afterNextRender, inject } from '@angular/core';
+import { inject } from '@angular/core';
 import { Theme } from '../../../themes';
 import {themes} from '../../../themes' with {analog: 'exposes'};
 import { ThemeStore } from '../../data-access/theme.store' with {analog: 'imports'};
@@ -14,12 +14,8 @@ import { ThemeStore } from '../../data-access/theme.store' with {analog: 'import
   const themeStore = inject(ThemeStore);
 
   function themeSelected(event: Event) {
-    console.log('themeSelected', event);
-
     themeStore.setTheme(event.target.value as Theme);
   }
-
-  afterNextRender(() => console.log('afterNextRender', themeStore.theme()));
 </script>
 
 <template>

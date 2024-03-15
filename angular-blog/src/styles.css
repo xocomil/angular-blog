@@ -28,5 +28,9 @@ body {
       }
     }
   }
+
+  .stable-gutters {
+    scrollbar-gutter: stable both-edges;
+  }
 }
 

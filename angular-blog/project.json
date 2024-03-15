@@ -14,7 +14,7 @@
       ],
       "options": {
         "main": "angular-blog/src/main.ts",
-        "configFile": "angular-blog/vite.config.ts",
+        "configFile": "angular-blog/vite.config.mts",
         "outputPath": "dist/angular-blog/client",
         "tsConfig": "angular-blog/tsconfig.app.json"
       },
