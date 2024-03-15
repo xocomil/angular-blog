@@ -1,4 +1,11 @@
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { effect } from '@angular/core';
+import {
+  patchState,
+  signalStore,
+  withHooks,
+  withMethods,
+  withState,
+} from '@ngrx/signals';
 import { Theme } from '../../themes';
 
 type ThemeState = {
@@ -14,6 +21,19 @@ export const ThemeStore = signalStore(
   withMethods((state) => ({
     setTheme(theme: Theme) {
       patchState(state, { theme });
+    },
+  })),
+  withHooks((state) => ({
+    onInit() {
+      const fromStorage = localStorage.getItem('theme');
+
+      if (fromStorage) {
+        state.setTheme(fromStorage as Theme);
+      }
+
+      effect(() => {
+        localStorage.setItem('theme', state.theme());
+      });
     },
   })),
 );
