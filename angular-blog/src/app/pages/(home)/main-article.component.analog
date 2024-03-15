@@ -22,7 +22,8 @@
   @if(!breakpointService.isSmallScreen()) {
     <div class="image overflow-hidden">
       <img src="https://picsum.photos/seed/jason/250/250"
-           class="w-[var(--image-size)] h-[var(--image-size)] max-w-[var(--image-size)]" />
+           class="w-[var(--image-size)] h-[var(--image-size)] max-w-[var(--image-size)]"
+           alt="Image representing article" />
     </div>
   }
   <div class="title col-span-2 md:col-span-1 max-w-full min-w-full md:pr-4">
