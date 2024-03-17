@@ -1,14 +1,20 @@
 import { afterNextRender, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ThemeStore } from './data-access/theme.store';
+import HeaderComponent from './pages/(home)/header.component.analog';
 
 @Component({
   selector: 'angular-blog-root',
   standalone: true,
-  imports: [RouterOutlet],
-  template: ` <router-outlet></router-outlet> `,
+  imports: [HeaderComponent, RouterOutlet],
+  template: `
+    <Header class="flex-none"></Header>
+    <div class="flex-grow overflow-hidden">
+      <router-outlet></router-outlet>
+    </div>
+  `,
   host: {
-    class: 'block h-full w-full max-w-full max-h-full',
+    class: 'block flex flex-col h-full w-full max-w-full max-h-full',
     '[attr.data-theme]': 'themeStore.theme()',
   },
   providers: [ThemeStore],
