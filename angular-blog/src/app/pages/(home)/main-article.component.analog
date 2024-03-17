@@ -1,7 +1,7 @@
 <script lang="ts">
   import { DateTimeHelper } from '@angular-blog/dates';
   import { computed, inject, input } from '@angular/core';
-  import { BreakpointService } from '../../services/breakpoint.service';
+  import { BreakpointService } from '../../services/breakpoint.service' with {analog: 'providers'};
   import { ArticleModel } from './models/article.model';
 
   const breakpointService = inject(BreakpointService);
@@ -14,7 +14,6 @@
     host: {
       class: 'grid gap-4 darken-article cursor-pointer transition hover:scale-105 active:hover:scale-95'
     },
-    providers: [BreakpointService]
   })
 </script>
 
