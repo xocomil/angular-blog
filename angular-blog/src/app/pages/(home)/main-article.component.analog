@@ -1,11 +1,11 @@
 <script lang="ts">
   import { DateTimeHelper } from '@angular-blog/dates';
-  import { computed, inject, signal } from '@angular/core';
+  import { computed, inject, input } from '@angular/core';
   import { BreakpointService } from '../../services/breakpoint.service';
-  import { createTestArticle } from './models/article.model';
+  import { ArticleModel } from './models/article.model';
 
   const breakpointService = inject(BreakpointService);
-  const article = signal(createTestArticle());
+  const article = input.required<ArticleModel>();
   const dateTimeHelper = inject(DateTimeHelper);
 
   const articleDate = computed(() => dateTimeHelper.toBlogArticleDate(article().date));

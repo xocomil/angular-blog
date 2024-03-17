@@ -4,8 +4,8 @@
   import {createTestArticle} from './models/article.model';
   import {faker} from '@faker-js/faker';
 
+  const mainArticle = createTestArticle();
   const articles = Array.from({length: faker.number.int({min: 3, max: 16})}, createTestArticle);
-  // const articles = Array.from({length: 3}, createTestArticle);
 
   defineMetadata({
     host: {
@@ -15,7 +15,7 @@
 </script>
 
 <template>
-  <MainArticle class="md:col-span-2"></MainArticle>
+  <MainArticle class="md:col-span-2" [article]="mainArticle"></MainArticle>
 
   @for(article of articles; track article.id) {
     <SecondaryArticle [article]="article"></SecondaryArticle>
