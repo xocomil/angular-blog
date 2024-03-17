@@ -1,6 +1,7 @@
 <script lang="ts">
   import MainArticle from './main-article.component.analog' with {analog: 'imports'};
   import SecondaryArticle from './secondary-article.component.analog' with {analog: 'imports'};
+  import { RouterLink } from '@angular/router' with {analog: 'imports'};
   import {createTestArticle} from './models/article.model';
   import {faker} from '@faker-js/faker';
 
@@ -17,12 +18,14 @@
 <template>
   <MainArticle
     class="md:col-span-2 article-hover"
-    [article]="mainArticle"></MainArticle>
+    [article]="mainArticle"
+    [routerLink]="['articles', mainArticle.id]"></MainArticle>
 
   @for(article of articles; track article.id) {
     <SecondaryArticle
       class="article-hover"
-      [article]="article"></SecondaryArticle>
+      [article]="article"
+      [routerLink]="['articles', article.id]"></SecondaryArticle>
   }
 </template>
 
