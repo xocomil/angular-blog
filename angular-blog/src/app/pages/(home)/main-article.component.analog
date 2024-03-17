@@ -12,7 +12,7 @@
 
   defineMetadata({
     host: {
-      class: 'grid gap-4 darken-article cursor-pointer transition hover:scale-105 active:hover:scale-95'
+      class: 'grid gap-4'
     },
   })
 </script>

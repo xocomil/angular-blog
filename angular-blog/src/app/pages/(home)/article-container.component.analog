@@ -15,9 +15,19 @@
 </script>
 
 <template>
-  <MainArticle class="md:col-span-2" [article]="mainArticle"></MainArticle>
+  <MainArticle
+    class="md:col-span-2 article-hover"
+    [article]="mainArticle"></MainArticle>
 
   @for(article of articles; track article.id) {
-    <SecondaryArticle [article]="article"></SecondaryArticle>
+    <SecondaryArticle
+      class="article-hover"
+      [article]="article"></SecondaryArticle>
   }
 </template>
+
+<style>
+  .article-hover {
+    @apply darken-article-accent cursor-pointer transition hover:scale-[1.01] active:hover:scale-[.99];
+  }
+</style>
