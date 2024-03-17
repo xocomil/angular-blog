@@ -1,14 +1,14 @@
 <script lang="ts">
-import { inject } from '@angular/core';
-import { Theme } from '../../../themes';
-import {themes} from '../../../themes' with {analog: 'exposes'};
-import { ThemeStore } from '../../data-access/theme.store' with {analog: 'imports'};
+  import { inject } from '@angular/core';
+  import { Theme } from '../../../themes';
+  import {themes} from '../../../themes' with {analog: 'exposes'};
+  import { ThemeStore } from '../../data-access/theme.store' with {analog: 'providers'};
+  import { RouterLink } from '@angular/router' with {analog: 'imports'};
 
   defineMetadata({
     host: {
       class: "w-full h-16 bg-primary flex p-4 items-center text-primary-content"
     },
-    exposes: [themes],
   });
 
   const themeStore = inject(ThemeStore);
@@ -19,7 +19,7 @@ import { ThemeStore } from '../../data-access/theme.store' with {analog: 'import
 </script>
 
 <template>
-  <div class="flex-1 justify-center">
+  <div class="flex-1 justify-center cursor-pointer" routerLink="/">
     <h1>Welcome</h1>
   </div>
   <div class="flex-none">

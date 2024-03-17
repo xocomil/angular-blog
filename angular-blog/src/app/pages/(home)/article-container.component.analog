@@ -1,11 +1,12 @@
 <script lang="ts">
   import MainArticle from './main-article.component.analog' with {analog: 'imports'};
   import SecondaryArticle from './secondary-article.component.analog' with {analog: 'imports'};
+  import { RouterLink } from '@angular/router' with {analog: 'imports'};
   import {createTestArticle} from './models/article.model';
   import {faker} from '@faker-js/faker';
 
+  const mainArticle = createTestArticle();
   const articles = Array.from({length: faker.number.int({min: 3, max: 16})}, createTestArticle);
-  // const articles = Array.from({length: 3}, createTestArticle);
 
   defineMetadata({
     host: {
@@ -15,9 +16,21 @@
 </script>
 
 <template>
-  <MainArticle class="md:col-span-2"></MainArticle>
+  <MainArticle
+    class="md:col-span-2 article-hover"
+    [article]="mainArticle"
+    [routerLink]="['articles', mainArticle.id]"></MainArticle>
 
   @for(article of articles; track article.id) {
-    <SecondaryArticle [article]="article"></SecondaryArticle>
+    <SecondaryArticle
+      class="article-hover"
+      [article]="article"
+      [routerLink]="['articles', article.id]"></SecondaryArticle>
   }
 </template>
+
+<style>
+  .article-hover {
+    @apply darken-article-accent cursor-pointer transition hover:scale-[1.01] active:hover:scale-[.99];
+  }
+</style>

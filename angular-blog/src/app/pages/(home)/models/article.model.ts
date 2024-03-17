@@ -1,17 +1,20 @@
 import { faker } from '@faker-js/faker';
 
 export type ArticleModel = {
+  id: string;
   title: string;
   content: string;
   date: Date;
 };
 
 export function createTestArticle({
+  id,
   title,
   content,
   date,
 }: Partial<ArticleModel> = {}): ArticleModel {
   return {
+    id: id ?? faker.string.uuid(),
     title:
       title ??
       faker.word

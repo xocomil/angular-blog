@@ -9,7 +9,7 @@ import { computed, inject, input } from '@angular/core';
 
   defineMetadata({
     host: {
-      class: 'flex flex-col flex-grow darken-article-accent cursor-pointer transition hover:scale-105 active:hover:scale-95'
+      class: 'flex flex-col flex-grow'
     }
   })
 </script>

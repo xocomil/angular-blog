@@ -4,12 +4,11 @@
 
   defineMetadata({
     host: {
-      class: 'flex flex-col h-full w-full max-h-full overflow-hidden'
+      class: 'block h-full w-full max-h-full'
     }
   })
 </script>
 
 <template>
-  <Header class="flex-none"></Header>
   <ArticleContainer></ArticleContainer>
 </template>
