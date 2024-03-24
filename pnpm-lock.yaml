@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@analogjs/content':
-    specifier: 1.0.0
-    version: 1.0.0(@angular/common@17.3.1)(@angular/core@17.3.1)(@angular/platform-browser@17.3.1)(@angular/router@17.3.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.3)(marked-highlight@2.1.1)(marked@5.1.2)(mermaid@10.9.0)(prismjs@1.29.0)(rxjs@7.8.1)
+    specifier: 1.0.1
+    version: 1.0.1(@angular/common@17.3.1)(@angular/core@17.3.1)(@angular/platform-browser@17.3.1)(@angular/router@17.3.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.3)(marked-highlight@2.1.1)(marked@5.1.2)(mermaid@10.9.0)(prismjs@1.29.0)(rxjs@7.8.1)
   '@analogjs/router':
-    specifier: 1.0.0
-    version: 1.0.0(@angular/common@17.3.1)(@angular/core@17.3.1)(@angular/platform-browser@17.3.1)(@angular/router@17.3.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.3)(marked-highlight@2.1.1)(marked@5.1.2)(mermaid@10.9.0)(prismjs@1.29.0)(rxjs@7.8.1)
+    specifier: 1.0.1
+    version: 1.0.1(@angular/common@17.3.1)(@angular/core@17.3.1)(@angular/platform-browser@17.3.1)(@angular/router@17.3.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.3)(marked-highlight@2.1.1)(marked@5.1.2)(mermaid@10.9.0)(prismjs@1.29.0)(rxjs@7.8.1)
   '@analogjs/trpc':
     specifier: 1.0.0-beta.5
     version: 1.0.0-beta.5(@angular/common@17.3.1)(@angular/core@17.3.1)(@trpc/client@10.45.2)(@trpc/server@10.45.2)(isomorphic-fetch@3.0.0)(superjson@2.2.1)
@@ -95,11 +95,11 @@ dependencies:
 
 devDependencies:
   '@analogjs/platform':
-    specifier: 1.0.0
-    version: 1.0.0(@angular-devkit/build-angular@17.3.1)(@nx/devkit@18.1.2)(@nx/vite@18.1.2)
+    specifier: 1.0.1
+    version: 1.0.1(@angular-devkit/build-angular@17.3.1)(@nx/devkit@18.1.2)(@nx/vite@18.1.2)
   '@analogjs/vite-plugin-angular':
-    specifier: 1.0.0
-    version: 1.0.0(@angular-devkit/build-angular@17.3.1)
+    specifier: 1.0.1
+    version: 1.0.1(@angular-devkit/build-angular@17.3.1)
   '@angular-devkit/build-angular':
     specifier: 17.3.1
     version: 17.3.1(@angular/compiler-cli@17.3.1)(@angular/platform-server@17.3.1)(@swc/core@1.4.8)(@types/node@20.11.28)(stylus@0.59.0)(tailwindcss@3.4.1)(typescript@5.4.2)
@@ -254,8 +254,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.25
     dev: true
 
-  /@analogjs/content@1.0.0(@angular/common@17.3.1)(@angular/core@17.3.1)(@angular/platform-browser@17.3.1)(@angular/router@17.3.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.3)(marked-highlight@2.1.1)(marked@5.1.2)(mermaid@10.9.0)(prismjs@1.29.0)(rxjs@7.8.1):
-    resolution: {integrity: sha512-K1SAu1mzE1T5CFMVUiU54BGBWlT3hp86GMXdvyJYreMFVht1pwuw799rj7TmkGlrK65AuYyTxjK1V8BTUVAM/g==}
+  /@analogjs/content@1.0.1(@angular/common@17.3.1)(@angular/core@17.3.1)(@angular/platform-browser@17.3.1)(@angular/router@17.3.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.3)(marked-highlight@2.1.1)(marked@5.1.2)(mermaid@10.9.0)(prismjs@1.29.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-o8MT7hMVUNcOUrbfmNeO1IZ6NUgFLgw4Jr4r2DCxnSvLIw6blFQ8Sho/sTmOvVI3yTdHsPlJALo5LZCykmtkLQ==}
     peerDependencies:
       '@angular/common': ^15.0.0 || >=16.0.0
       '@angular/core': ^15.0.0 || >=16.0.0
@@ -283,13 +283,13 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@analogjs/platform@1.0.0(@angular-devkit/build-angular@17.3.1)(@nx/devkit@18.1.2)(@nx/vite@18.1.2):
-    resolution: {integrity: sha512-Eu3V37N10QBBzYvKXnWoGLt4yJ4cUhc8OmNjADbs0aO3sz1aJHZo1JGEXqjdBO6DzS/yL7eX1soGRow0t9FfcA==}
+  /@analogjs/platform@1.0.1(@angular-devkit/build-angular@17.3.1)(@nx/devkit@18.1.2)(@nx/vite@18.1.2):
+    resolution: {integrity: sha512-ujPDt/m7ZMBZ4Pu2+PA5iLmO63sm61fiJhoZ/9P5VQWNTQJcxuUhaAqqaub/xCOI8xoFXyRfxyVW8MDhlRMqpw==}
     peerDependencies:
       '@nx/devkit': ^16.0.0 || ^17.0.0 || ^18.0.0
       '@nx/vite': ^16.0.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@analogjs/vite-plugin-angular': 1.0.0(@angular-devkit/build-angular@17.3.1)
+      '@analogjs/vite-plugin-angular': 1.0.1(@angular-devkit/build-angular@17.3.1)
       '@analogjs/vite-plugin-nitro': 1.0.0
       '@nx/devkit': 18.1.2(nx@18.1.2)
       '@nx/vite': 18.1.2(@swc-node/register@1.9.0)(@swc/core@1.4.8)(@types/node@20.11.28)(nx@18.1.2)(typescript@5.4.2)(vite@5.1.6)(vitest@1.4.0)
@@ -313,8 +313,8 @@ packages:
       - xml2js
     dev: true
 
-  /@analogjs/router@1.0.0(@angular/common@17.3.1)(@angular/core@17.3.1)(@angular/platform-browser@17.3.1)(@angular/router@17.3.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.3)(marked-highlight@2.1.1)(marked@5.1.2)(mermaid@10.9.0)(prismjs@1.29.0)(rxjs@7.8.1):
-    resolution: {integrity: sha512-tLQTFTXP2V4se8y+45DX6wlIcTeFwtHVnVHbWVyPikWCTBe9rhEIVpEMgQT06qGl0kgfZpDcz6XUOJicLIdf6g==}
+  /@analogjs/router@1.0.1(@angular/common@17.3.1)(@angular/core@17.3.1)(@angular/platform-browser@17.3.1)(@angular/router@17.3.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.3)(marked-highlight@2.1.1)(marked@5.1.2)(mermaid@10.9.0)(prismjs@1.29.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-z2mBm6enQta4vcSt/A55XEiZ6qeRJsWdgRTVgbw6+ey7meNeM04W9JKccMvOkOnC5WWk87X8mD+wMyc098drbg==}
     peerDependencies:
       '@angular/core': ^15.0.0 || >=16.0.0
       '@angular/router': ^15.0.0 || >=16.0.0
@@ -323,7 +323,7 @@ packages:
       '@angular/router': 17.3.1(@angular/common@17.3.1)(@angular/core@17.3.1)(@angular/platform-browser@17.3.1)(rxjs@7.8.1)
       tslib: 2.6.2
     optionalDependencies:
-      '@analogjs/content': 1.0.0(@angular/common@17.3.1)(@angular/core@17.3.1)(@angular/platform-browser@17.3.1)(@angular/router@17.3.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.3)(marked-highlight@2.1.1)(marked@5.1.2)(mermaid@10.9.0)(prismjs@1.29.0)(rxjs@7.8.1)
+      '@analogjs/content': 1.0.1(@angular/common@17.3.1)(@angular/core@17.3.1)(@angular/platform-browser@17.3.1)(@angular/router@17.3.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.3)(marked-highlight@2.1.1)(marked@5.1.2)(mermaid@10.9.0)(prismjs@1.29.0)(rxjs@7.8.1)
     transitivePeerDependencies:
       - '@angular/common'
       - '@angular/platform-browser'
@@ -355,8 +355,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@analogjs/vite-plugin-angular@1.0.0(@angular-devkit/build-angular@17.3.1):
-    resolution: {integrity: sha512-9xlLbT9yuL6ioKANrylKNqwjT2pcioTex8bgOjSvQh2b7QaFkhWjpuGr47eKPtzkDFmPKM8aAffFpCWBGSaksg==}
+  /@analogjs/vite-plugin-angular@1.0.1(@angular-devkit/build-angular@17.3.1):
+    resolution: {integrity: sha512-hDO/EmtiYfqwOhJW2dOTZmG55k3veKcXsztYVUH8n57EIcjF+OMp1Iq/rs6DElutPUOxPT2Iy/7Po+ALETDQBQ==}
     peerDependencies:
       '@angular-devkit/build-angular': ^15.0.0 || >=16.0.0
     dependencies:
