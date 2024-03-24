@@ -41,19 +41,19 @@
   :host {
     --image-size: 250px;
 
-    @media screen(md) {
-      grid-template-areas: "image title"
-                           "image content";
-      grid-template-columns: var(--image-size) 1fr;
-    }
-
     grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr;
     grid-template-areas: "title"
                          "content";
 
-    .image {
-      grid-area: image;
+    @media screen(md) {
+      grid-template-areas: "image title"
+                           "image content";
+      grid-template-columns: var(--image-size) 1fr;
+
+      .image {
+        grid-area: image;
+      }
     }
     .title {
       grid-area: title;
