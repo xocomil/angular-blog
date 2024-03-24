@@ -17,13 +17,13 @@
 
 <template>
   <MainArticle
-    class="md:col-span-2 article-hover"
+    class="md:col-span-2 article-hover darken-article"
     [article]="mainArticle"
     [routerLink]="['articles', mainArticle.id]"></MainArticle>
 
   @for(article of articles; track article.id) {
     <SecondaryArticle
-      class="article-hover"
+      class="article-hover darken-article-accent"
       [article]="article"
       [routerLink]="['articles', article.id]"></SecondaryArticle>
   }
@@ -31,6 +31,6 @@
 
 <style>
   .article-hover {
-    @apply darken-article-accent cursor-pointer transition hover:scale-[1.01] active:hover:scale-[.99];
+    @apply cursor-pointer transition hover:scale-[1.01] active:hover:scale-[.99];
   }
 </style>

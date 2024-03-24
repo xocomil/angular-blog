@@ -9,7 +9,7 @@ import { Theme, themes } from '../../../themes';
 import { ThemeStore } from '../../data-access/theme.store';
 
 @Component({
-  selector: 'header',
+  selector: 'blog-header',
   standalone: true,
   imports: [CommonModule],
   template: `
@@ -33,7 +33,8 @@ import { ThemeStore } from '../../data-access/theme.store';
   styleUrl: './header.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'w-full h-16 bg-primary flex p-4 items-center text-primary-content',
+    class:
+      'block w-full h-16 bg-primary flex p-4 items-center text-primary-content',
   },
 })
 export class HeaderComponent {

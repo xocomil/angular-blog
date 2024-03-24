@@ -1,14 +1,14 @@
 import { afterNextRender, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ThemeStore } from './data-access/theme.store';
 import { HeaderComponent } from './components/header/header.component';
+import { ThemeStore } from './data-access/theme.store';
 
 @Component({
   selector: 'angular-blog-root',
   standalone: true,
   imports: [HeaderComponent, RouterOutlet],
   template: `
-    <Header class="flex-none"></Header>
+    <blog-header class="flex-none" />
     <div class="flex-grow overflow-hidden">
       <router-outlet></router-outlet>
     </div>
