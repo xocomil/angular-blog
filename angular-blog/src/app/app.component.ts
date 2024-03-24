@@ -1,7 +1,7 @@
 import { afterNextRender, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ThemeStore } from './data-access/theme.store';
-import HeaderComponent from './pages/(home)/header.component.analog';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'angular-blog-root',
