@@ -1,5 +1,6 @@
 <script lang="ts">
   import { DateTimeHelper } from '@angular-blog/dates';
+  import { NgOptimizedImage } from '@angular/common' with {analog: 'imports'};
   import { computed, inject, input } from '@angular/core';
   import { BreakpointService } from '../../services/breakpoint.service' with {analog: 'providers'};
   import { ArticleModel } from './models/article.model';
@@ -20,9 +21,9 @@
 <template>
   @if(!breakpointService.isSmallScreen()) {
     <div class="image overflow-hidden">
-      <img src="https://picsum.photos/seed/jason/250/250"
+      <img ngSrc="https://picsum.photos/seed/jason/250/250"
            class="w-[var(--image-size)] h-[var(--image-size)] max-w-[var(--image-size)]"
-           alt="Image representing article" />
+           alt="Image representing article" width="250" height="250" />
     </div>
   }
   <div class="title col-span-2 md:col-span-1 max-w-full min-w-full md:pr-4">

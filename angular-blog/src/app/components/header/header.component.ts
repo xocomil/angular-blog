@@ -1,17 +1,17 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   inject,
   signal,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Theme, themes } from '../../../themes';
 import { ThemeStore } from '../../data-access/theme.store';
 
 @Component({
   selector: 'blog-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [RouterLink],
   template: `
     <div class="flex-1 justify-center cursor-pointer" routerLink="/">
       <h1>Welcome</h1>
@@ -42,8 +42,26 @@ export class HeaderComponent {
   protected readonly themes = signal(themes);
 
   protected themeSelected(event: Event) {
-    console.log('event', event);
-
-    this.themeStore.setTheme((event.target as any)?.value as Theme);
+    if (hasThemeValue(event.target)) {
+      this.themeStore.setTheme(event.target.value);
+    }
   }
+}
+
+function hasThemeValue(eventTarget: unknown): eventTarget is { value: Theme } {
+  if (!hasValueProperty(eventTarget)) {
+    return false;
+  }
+
+  return themes.includes(eventTarget.value as Theme);
+}
+
+function hasValueProperty(
+  eventTarget: unknown,
+): eventTarget is { value: unknown } {
+  return (
+    eventTarget != null &&
+    typeof eventTarget === 'object' &&
+    'value' in eventTarget
+  );
 }

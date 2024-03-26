@@ -1,4 +1,4 @@
-import { afterNextRender, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { ThemeStore } from './data-access/theme.store';
@@ -21,10 +21,4 @@ import { ThemeStore } from './data-access/theme.store';
 })
 export class AppComponent {
   protected readonly themeStore = inject(ThemeStore);
-
-  constructor() {
-    afterNextRender(() => {
-      console.log('AppComponent rendered');
-    });
-  }
 }
