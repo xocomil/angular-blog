@@ -1,0 +1,11 @@
+<script lang="ts">
+  defineMetadata({
+    host: {
+      class: 'block'
+    }
+  })
+</script>
+
+<template>
+  This is a footer.
+</template>
