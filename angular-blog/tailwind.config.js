@@ -9,7 +9,12 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateRows: {
+        'article-home':
+          'minmax(var(--article-home-min), 33%) repeat(2, minmax(var(--article-home-min), 1fr))',
+      },
+    },
   },
   plugins: [require('daisyui')],
   daisyui: {

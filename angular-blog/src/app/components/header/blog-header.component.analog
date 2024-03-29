@@ -1,0 +1,57 @@
+<script lang="ts">
+  import { inject } from '@angular/core';
+  import { Theme } from '../../../themes';
+  import {themes} from '../../../themes' with {analog: 'exposes'};
+  import { ThemeStore } from '../../data-access/theme.store';
+  import { RouterLink } from '@angular/router' with {analog: 'imports'};
+
+  defineMetadata({
+    host: {
+      class: "w-full h-16 bg-primary flex p-4 items-center text-primary-content"
+    },
+  });
+
+  const themeStore = inject(ThemeStore);
+
+  function themeSelected(event: Event) {
+    if (hasThemeValue(event.target)) {
+      themeStore.setTheme(event.target.value);
+    }
+  }
+
+  function hasThemeValue(eventTarget: unknown): eventTarget is { value: Theme } {
+    if (!hasValueProperty(eventTarget)) {
+      return false;
+    }
+
+    return themes.includes(eventTarget.value as Theme);
+  }
+
+  function hasValueProperty(
+    eventTarget: unknown,
+  ): eventTarget is { value: unknown } {
+    return (
+      eventTarget != null &&
+      typeof eventTarget === 'object' &&
+      'value' in eventTarget
+    );
+  }
+
+</script>
+
+<template>
+  <div class="flex-1 justify-center cursor-pointer" routerLink="/">
+    <h1>Welcome</h1>
+  </div>
+  <div class="flex-none">
+    <select
+      class="select select-bordered select-sm text-base-content"
+      (change)="themeSelected($event)"
+    >
+      <option value="" disabled>Theme</option>
+      @for (theme of themes; track theme) {
+        <option [value]="theme" [selected]="theme === themeStore.theme()">{{theme}}</option>
+      }
+    </select>
+  </div>
+</template>

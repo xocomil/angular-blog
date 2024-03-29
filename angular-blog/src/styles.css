@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --article-home-min: 8rem;
+}
+
 html,
 body {
   display: block;
