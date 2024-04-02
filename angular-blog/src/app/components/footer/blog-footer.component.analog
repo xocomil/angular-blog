@@ -1,11 +1,13 @@
 <script lang="ts">
+  import { RouterLink } from '@angular/router' with {analog: 'imports'};
+
   defineMetadata({
     host: {
-      class: 'block'
+      class: 'block p-4',
     }
   })
 </script>
 
 <template>
-  This is a footer.
+  <a routerLink="/articles" class="link link-accent">All Articles</a>
 </template>
