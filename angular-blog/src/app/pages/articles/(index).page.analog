@@ -1,3 +1,7 @@
+<script lang="ts">
+import AllArticles from './(index)/all-articles.component.analog' with {analog: 'imports'};
+</script>
+
 <template>
-  <p>index page works!! 1234</p>
+  <AllArticles />
 </template>

@@ -5,6 +5,7 @@ export type ArticleModel = {
   title: string;
   content: string;
   date: Date;
+  imageUrl: string;
 };
 
 export function createTestArticle({
@@ -12,6 +13,7 @@ export function createTestArticle({
   title,
   content,
   date,
+  imageUrl,
 }: Partial<ArticleModel> = {}): ArticleModel {
   return {
     id: id ?? faker.string.uuid(),
@@ -29,5 +31,7 @@ export function createTestArticle({
         .join(' '),
     content: content ?? faker.lorem.paragraph({ min: 10, max: 40 }),
     date: date ?? faker.date.recent({ days: 30 }),
+    imageUrl:
+      imageUrl ?? `https://picsum.photos/seed/${faker.word.noun()}/250/250`,
   };
 }

@@ -1,8 +1,9 @@
 <script lang="ts">
-import { computed, inject, input } from '@angular/core';
+  import { computed, inject, input } from '@angular/core';
   import { DateTimeHelper } from '@angular-blog/dates';
+  import {ArticleModel} from '../../models/article.model';
 
-  const article = input.required<Article>();
+  const article = input.required<ArticleModel>();
   const dateTimeHelper = inject(DateTimeHelper);
 
   const articleDate = computed(() => dateTimeHelper.toBlogArticleDate(article().date));

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import MainArticle from './main-article.component.analog' with {analog: 'imports'};
+  import ArticleBlurb from '../../components/article-blurb/article-blurb.component.analog' with {analog: 'imports'};
   import SecondaryArticle from './secondary-article.component.analog' with {analog: 'imports'};
   import { RouterLink } from '@angular/router' with {analog: 'imports'};
-  import {createTestArticle} from './models/article.model';
+  import {createTestArticle} from '../../models/article.model';
   import {faker} from '@faker-js/faker';
 
   const mainArticle = createTestArticle();
@@ -16,10 +16,10 @@
 </script>
 
 <template>
-  <MainArticle
+  <ArticleBlurb
     class="md:col-span-2 article-hover darken-article"
     [article]="mainArticle"
-    [routerLink]="['articles', mainArticle.id]"></MainArticle>
+    [routerLink]="['articles', mainArticle.id]"></ArticleBlurb>
 
   @for(article of articles; track article.id) {
     <SecondaryArticle
@@ -28,9 +28,3 @@
       [routerLink]="['articles', article.id]"></SecondaryArticle>
   }
 </template>
-
-<style>
-  .article-hover {
-    @apply cursor-pointer transition hover:scale-[1.01] active:hover:scale-[.99];
-  }
-</style>

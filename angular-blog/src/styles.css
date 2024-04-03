@@ -36,5 +36,9 @@ body {
   .stable-gutters {
     scrollbar-gutter: stable both-edges;
   }
+
+  .article-hover {
+    @apply cursor-pointer transition hover:scale-[1.01] active:hover:scale-[.99];
+  }
 }
 
