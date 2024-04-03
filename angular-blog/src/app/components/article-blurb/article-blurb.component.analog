@@ -3,7 +3,7 @@
   import { NgOptimizedImage } from '@angular/common' with {analog: 'imports'};
   import { computed, inject, input } from '@angular/core';
   import { BreakpointService } from '../../services/breakpoint.service' with {analog: 'providers'};
-  import { ArticleModel } from './models/article.model';
+  import { ArticleModel } from '../../models/article.model';
 
   const breakpointService = inject(BreakpointService);
   const article = input.required<ArticleModel>();
