@@ -1,3 +1,66 @@
+<script lang="ts">
+  import { NgOptimizedImage } from '@angular/common' with {analog: 'imports'};
+  import { signal } from '@angular/core';
+
+  const imageHeight = signal('320px');
+
+  defineMetadata({
+    host: {
+      class: 'grid overflow-y-auto max-h-full',
+      '[style.--height]': 'imageHeight()'
+    }
+  })
+
+  const size = nextSize();
+
+  function resize() {
+    const newSize = size.next().value;
+
+    console.log('resize', newSize);
+
+    if(newSize) {
+      imageHeight.set(newSize);
+    }
+
+  }
+
+  function *nextSize() {
+    while(true) {
+      yield '160px';
+      yield '320px';
+    }
+  }
+</script>
+
 <template>
-  Here are your articles!
+  <div class="image">
+    <img
+      ngSrc="https://picsum.photos/seed/sdxl/1536/320"
+      width="1536"
+      height="320"
+      priority="true"
+      class="w-full h-full object-cover"
+      (click)="resize()"
+    />
+  </div>
+  <div class="title"></div>
+  <div class="content"></div>
 </template>
+
+<style>
+  :host {
+      grid-template-columns: [left-edge] 2em [left-bleed] 1fr [right-bleed] 2em [right-edge];
+      grid-template-rows: var(--height) 150px 1fr;
+      gap: 1em 1em;
+      grid-template-areas:
+    "image image image"
+    ". title ."
+    ". content .";
+
+    .image { grid-area: image; background: hsl(120deg 100 50/.3); }
+
+    .title { grid-area: title; background: red; }
+
+    .content { grid-area: content; background: blue; min-height: 1000px; }
+  }
+</style>
