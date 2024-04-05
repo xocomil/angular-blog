@@ -17,7 +17,7 @@
   @for (article of allArticles; track article.id) {
     <ArticleBlurb
       [article]="article"
-      class="pb-4 last:pb-0 article-hover darken-article-accent"
+      class="pb-4 last:pb-0 article-hover darken-article-accent min-h-48 md:min-h-unset"
       [routerLink]="[article.id]"
     />
   }
