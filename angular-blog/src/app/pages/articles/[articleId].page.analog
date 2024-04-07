@@ -1,6 +1,12 @@
 <script lang="ts">
-  import { NgOptimizedImage } from '@angular/common' with {analog: 'imports'};
-  import { signal } from '@angular/core';
+  import { JsonPipe } from '@angular/common' with {analog: 'imports'};
+  import { NgOptimizedImage } from '@angular/common' with { analog: 'imports' };
+  import { computed, inject, input, signal } from '@angular/core';
+  import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+  import { switchMap } from 'rxjs';
+  import { ArticlesService } from '../../services/articles.service';
+
+  const articlesService = inject(ArticlesService);
 
   const imageHeight = signal('320px');
 
@@ -11,6 +17,15 @@
     }
   })
 
+  const id = input.required<string>({alias: 'articleId'});
+  const article = toSignal(toObservable(id).pipe(
+    switchMap(id => articlesService.getArticle(id, [1536, 320]))
+  ));
+  const articleImageUrl = computed(() => {
+    const imageUrl = article()?.imageUrl;
+
+    return imageUrl ?? 'test';
+  });
   const size = nextSize();
 
   function resize() {
@@ -21,11 +36,11 @@
     if(newSize) {
       imageHeight.set(newSize);
     }
-
   }
 
   function *nextSize() {
     while(true) {
+      yield '240px';
       yield '160px';
       yield '320px';
     }
@@ -35,7 +50,7 @@
 <template>
   <div class="image">
     <img
-      ngSrc="https://picsum.photos/seed/sdxl/1536/320"
+      [ngSrc]="articleImageUrl()"
       width="1536"
       height="320"
       priority="true"
@@ -44,7 +59,9 @@
     />
   </div>
   <div class="title"></div>
-  <div class="content"></div>
+  <div class="content overflow-x-auto">
+    <pre>{{ article() | json }}</pre>
+  </div>
 </template>
 
 <style>
@@ -61,6 +78,10 @@
 
     .title { grid-area: title; background: red; }
 
-    .content { grid-area: content; background: blue; min-height: 1000px; }
+    .content {
+      grid-area: content;
+      background: blue;
+      min-height: 1000px;
+    }
   }
 </style>
