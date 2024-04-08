@@ -1,10 +1,12 @@
 <script lang="ts">
+  import { inject } from '@angular/core';
+  import { toSignal } from '@angular/core/rxjs-interop';
   import { RouterLink } from '@angular/router' with {analog: 'imports'};
-  import { faker } from '@faker-js/faker';
-  import { createTestArticle } from '../../../models/article.model';
   import ArticleBlurb from '../../../components/article-blurb/article-blurb.component.analog' with {analog: 'imports'};
+  import { ArticlesService } from '../../../services/articles.service';
 
-  const allArticles = Array.from({length: faker.number.int({min: 15, max: 30})}, createTestArticle)
+  const articlesService = inject(ArticlesService);
+  const allArticles = toSignal(articlesService.getAllArticles());
 
   defineMetadata({
     host: {
@@ -14,7 +16,7 @@
 </script>
 
 <template>
-  @for (article of allArticles; track article.id) {
+  @for (article of allArticles(); track article.id) {
     <ArticleBlurb
       [article]="article"
       class="pb-4 last:pb-0 article-hover darken-article-accent min-h-48 md:min-h-unset"
