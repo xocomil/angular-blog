@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { JsonPipe } from '@angular/common' with {analog: 'imports'};
+  import { DOCUMENT } from '@angular/common';
   import { NgOptimizedImage } from '@angular/common' with { analog: 'imports' };
   import { computed, inject, input, signal } from '@angular/core';
   import { toObservable, toSignal } from '@angular/core/rxjs-interop';
@@ -10,6 +10,7 @@
 
   const articlesService = inject(ArticlesService);
   const dateTimeHelper = inject(DateTimeHelper);
+  const document = inject(DOCUMENT);
 
   const imageHeight = signal('320px');
 
@@ -27,6 +28,8 @@
   const articleImageUrl = computed(() => {
     const imageUrl = article()?.imageUrl;
 
+    console.log('imageUrl', imageUrl);
+
     return imageUrl ?? 'test';
   });
   const byline = computed(() => {
@@ -39,13 +42,15 @@
 
 
   function resize() {
-    const newSize = size.next().value;
+    (document as any).startViewTransition(() => {
+      const newSize = size.next().value;
 
-    console.log('resize', newSize);
+      console.log('resize', newSize);
 
-    if(newSize) {
-      imageHeight.set(newSize);
-    }
+      if(newSize) {
+        imageHeight.set(newSize);
+      }
+    });
   }
 
   function *nextSize() {
@@ -89,10 +94,24 @@
     .image {
       grid-area: image;
       background: theme(colors.secondary / 5%);
+      view-transition-name: image-transition;
     }
 
     .title { grid-area: title; }
 
     .content { grid-area: content; }
+
+    ::ng-deep {
+      ::view-transition-old(image-transition),
+      ::view-transition-new(image-transition) {
+        animation: none;
+        animation-duration: 1.5s;
+        height: 100%;
+      }
+
+      ::view-transition-new(image-transition) {
+        height: var(--height);
+      }
+    }
   }
 </style>
