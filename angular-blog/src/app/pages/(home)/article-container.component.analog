@@ -1,12 +1,15 @@
 <script lang="ts">
+  import { inject } from '@angular/core';
+  import { toSignal } from '@angular/core/rxjs-interop';
   import ArticleBlurb from '../../components/article-blurb/article-blurb.component.analog' with {analog: 'imports'};
+  import { ArticlesService } from '../../services/articles.service';
   import SecondaryArticle from './secondary-article.component.analog' with {analog: 'imports'};
   import { RouterLink } from '@angular/router' with {analog: 'imports'};
-  import {createTestArticle} from '../../models/article.model';
-  import {faker} from '@faker-js/faker';
 
-  const mainArticle = createTestArticle();
-  const articles = Array.from({length: faker.number.int({min: 3, max: 4})}, createTestArticle);
+  const articlesService = inject(ArticlesService);
+
+  const mainArticle = toSignal(articlesService.getMainArticle());
+  const articles = toSignal(articlesService.getHighlightArticles());
 
   defineMetadata({
     host: {
@@ -18,10 +21,10 @@
 <template>
   <ArticleBlurb
     class="md:col-span-2 article-hover darken-article"
-    [article]="mainArticle"
-    [routerLink]="['articles', mainArticle.id]"></ArticleBlurb>
+    [article]="mainArticle()"
+    [routerLink]="['articles', mainArticle().id]"></ArticleBlurb>
 
-  @for(article of articles; track article.id) {
+  @for(article of articles(); track article.id) {
     <SecondaryArticle
       class="article-hover darken-article-accent"
       [article]="article"

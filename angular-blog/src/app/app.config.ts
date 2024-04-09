@@ -3,14 +3,17 @@ import { provideDateTimeHelper } from '@angular-blog/dates';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ApplicationConfig } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
-import { withComponentInputBinding } from '@angular/router';
+import {
+  withComponentInputBinding,
+  withViewTransitions,
+} from '@angular/router';
 import { provideTrpcClient } from '../trpc-client';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(),
     provideDateTimeHelper(),
-    provideFileRouter(withComponentInputBinding()),
+    provideFileRouter(withComponentInputBinding(), withViewTransitions()),
     provideHttpClient(withFetch()),
     provideTrpcClient(),
   ],

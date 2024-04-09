@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { faker } from '@faker-js/faker';
 import { Observable, of } from 'rxjs';
 import { ArticleModel, createTestArticle } from '../models/article.model';
 
@@ -18,6 +19,28 @@ export class ArticlesService {
         imageHeight,
         imageWidth,
       }),
+    );
+  }
+
+  getMainArticle(): Observable<ArticleModel> {
+    return of(createTestArticle());
+  }
+
+  getHighlightArticles(): Observable<ArticleModel[]> {
+    return of(
+      Array.from(
+        { length: faker.number.int({ min: 3, max: 4 }) },
+        createTestArticle,
+      ),
+    );
+  }
+
+  getAllArticles(): Observable<ArticleModel[]> {
+    return of(
+      Array.from(
+        { length: faker.number.int({ min: 15, max: 30 }) },
+        createTestArticle,
+      ),
     );
   }
 }
