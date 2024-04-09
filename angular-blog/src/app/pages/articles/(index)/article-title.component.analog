@@ -1,0 +1,21 @@
+<script lang="ts">
+  import { inject, input } from '@angular/core';
+
+  defineMetadata({
+    host: {
+      class: 'flex flex-col gap-1'
+    }
+  });
+
+  const title = input.required<string>();
+  const byline = input.required<string>();
+</script>
+
+<template>
+  <h1 class="text-base md:text-2xl lg:text-4xl">{{title()}}</h1>
+  <div class="text-end opacity-75 text-xs italic">{{byline()}}</div>
+</template>
+
+<style>
+
+</style>

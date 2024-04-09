@@ -3,6 +3,7 @@ import { faker } from '@faker-js/faker';
 export type ArticleModel = {
   id: string;
   title: string;
+  author: string;
   content: string;
   date: Date;
   imageUrl: string;
@@ -12,6 +13,7 @@ export function createTestArticle(
   {
     id,
     title,
+    author,
     content,
     date,
     imageUrl,
@@ -36,7 +38,9 @@ export function createTestArticle(
         .split(' ')
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' '),
-    content: content ?? faker.lorem.paragraph({ min: 10, max: 40 }),
+    author: author ?? faker.person.fullName(),
+    content:
+      content ?? faker.lorem.paragraphs({ min: 30, max: 50 }, '<br><br>'),
     date: date ?? faker.date.recent({ days: 30 }),
     imageUrl:
       imageUrl ??

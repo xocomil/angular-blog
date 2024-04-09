@@ -4,9 +4,12 @@
   import { computed, inject, input, signal } from '@angular/core';
   import { toObservable, toSignal } from '@angular/core/rxjs-interop';
   import { switchMap } from 'rxjs';
+  import { DateTimeHelper } from '@angular-blog/dates';
   import { ArticlesService } from '../../services/articles.service';
+  import ArticleTitle from './(index)/article-title.component.analog' with {analog: 'imports'};
 
   const articlesService = inject(ArticlesService);
+  const dateTimeHelper = inject(DateTimeHelper);
 
   const imageHeight = signal('320px');
 
@@ -26,7 +29,14 @@
 
     return imageUrl ?? 'test';
   });
+  const byline = computed(() => {
+    const byline = `${article()?.author} ${dateTimeHelper.toBlogArticleDate(article()?.date)}` ;
+
+    return byline ?? 'test';
+  });
+
   const size = nextSize();
+
 
   function resize() {
     const newSize = size.next().value;
@@ -58,30 +68,31 @@
       (click)="resize()"
     />
   </div>
-  <div class="title"></div>
-  <div class="content overflow-x-auto">
-    <pre>{{ article() | json }}</pre>
+  <div class="title flex justify-center">
+    <ArticleTitle [title]="article()?.title" [byline]="byline()" />
+  </div>
+  <div class="content">
+    {{ article()?.content }}
   </div>
 </template>
 
 <style>
   :host {
       grid-template-columns: [left-edge] 2em [left-bleed] 1fr [right-bleed] 2em [right-edge];
-      grid-template-rows: var(--height) 150px 1fr;
+      grid-template-rows: var(--height) min-content 1fr;
       gap: 1em 1em;
       grid-template-areas:
     "image image image"
     ". title ."
     ". content .";
 
-    .image { grid-area: image; background: hsl(120deg 100 50/.3); }
-
-    .title { grid-area: title; background: red; }
-
-    .content {
-      grid-area: content;
-      background: blue;
-      min-height: 1000px;
+    .image {
+      grid-area: image;
+      background: theme(colors.secondary / 5%);
     }
+
+    .title { grid-area: title; }
+
+    .content { grid-area: content; }
   }
 </style>
