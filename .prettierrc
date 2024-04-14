@@ -1,4 +1,13 @@
 {
   "singleQuote": true,
-  "plugins": ["prettier-plugin-organize-attributes", "prettier-plugin-organize-imports"]
+  "plugins": ["prettier-plugin-organize-attributes", "prettier-plugin-organize-imports"],
+  "overrides": [
+    {
+      "files": "*.analog",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ],
+  "vueIndentScriptAndStyle": true
 }
