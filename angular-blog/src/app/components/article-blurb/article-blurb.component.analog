@@ -1,39 +1,43 @@
 <script lang="ts">
   import { DateTimeHelper } from '@angular-blog/dates';
-  import { NgOptimizedImage } from '@angular/common' with {analog: 'imports'};
+  import { NgOptimizedImage } from '@angular/common' with { analog: 'imports' };
   import { computed, inject, input } from '@angular/core';
-  import { BreakpointService } from '../../services/breakpoint.service' with {analog: 'providers'};
+  import { BreakpointService } from '../../services/breakpoint.service' with { analog: 'providers' };
   import { ArticleModel } from '../../models/article.model';
 
   const breakpointService = inject(BreakpointService);
   const article = input.required<ArticleModel>();
   const dateTimeHelper = inject(DateTimeHelper);
 
-  const articleDate = computed(() => dateTimeHelper.toBlogArticleDate(article().date));
-
-  defineMetadata({
-    host: {
-      class: 'grid gap-4'
-    },
-  })
+  const articleDate = computed(() =>
+    dateTimeHelper.toBlogArticleDate(article().date),
+  );
 </script>
 
-<template>
-  @if(!breakpointService.isSmallScreen()) {
+<template class="grid gap-4">
+  @if (!breakpointService.isSmallScreen()) {
     <div class="image overflow-hidden">
-      <img [ngSrc]="article().imageUrl"
-           class="w-[var(--image-size)] h-[var(--image-size)] max-w-[var(--image-size)]"
-           alt="Image representing article" width="250" height="250" />
+      <img
+        class="w-[var(--image-size)] h-[var(--image-size)] max-w-[var(--image-size)]"
+        [ngSrc]="article().imageUrl"
+        alt="Image representing article"
+        width="250"
+        height="250"
+      />
     </div>
   }
   <div class="title col-span-2 md:col-span-1 max-w-full min-w-full md:pr-4">
-    <h3 [title]="article().title" class="text-center truncate">{{ article().title }}</h3>
+    <h3 class="text-center truncate" [title]="article().title">
+      {{ article().title }}
+    </h3>
   </div>
   <div class="content md:pr-4 flex flex-col max-h-full overflow-hidden">
     <div class="opacity-75 text-xs italic">{{ articleDate() }}</div>
     <div class="flex-1 main-article-blurb relative overflow-hidden">
       <p>{{ article().content }}</p>
-      <div class="main-article-gradient absolute bottom-0 left-0 max-h-14 min-h-14 min-w-full z-10"></div>
+      <div
+        class="main-article-gradient absolute bottom-0 left-0 max-h-14 min-h-14 min-w-full z-10"
+      ></div>
     </div>
   </div>
 </template>
@@ -44,12 +48,14 @@
 
     grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr;
-    grid-template-areas: "title"
-                         "content";
+    grid-template-areas:
+      'title'
+      'content';
 
     @media screen(md) {
-      grid-template-areas: "image title"
-                           "image content";
+      grid-template-areas:
+        'image title'
+        'image content';
       grid-template-columns: var(--image-size) 1fr;
 
       .image {
@@ -67,14 +73,22 @@
       container-name: main-blurb;
     }
     .main-article-gradient {
-      background: linear-gradient(180deg,  theme(colors.base-100 / 0%) 0%, theme(colors.base-100/ 50%) 100%);
+      background: linear-gradient(
+        180deg,
+        theme(colors.base-100 / 0%) 0%,
+        theme(colors.base-100/ 50%) 100%
+      );
       pointer-events: none;
     }
 
     @container main-blurb (min-height: theme(height.20)) {
       .main-article-gradient {
         height: theme(height.16);
-        background: linear-gradient(180deg,  theme(colors.base-100 / 20%) 0%, theme(colors.base-100/ 85%) 100%);
+        background: linear-gradient(
+          180deg,
+          theme(colors.base-100 / 20%) 0%,
+          theme(colors.base-100/ 85%) 100%
+        );
       }
     }
   }

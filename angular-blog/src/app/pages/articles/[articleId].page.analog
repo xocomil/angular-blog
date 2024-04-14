@@ -14,13 +14,6 @@
 
   const imageHeight = signal('320px');
 
-  defineMetadata({
-    host: {
-      class: 'grid overflow-y-auto max-h-full',
-      '[style.--height]': 'imageHeight()'
-    }
-  })
-
   const id = input.required<string>({alias: 'articleId'});
   const article = toSignal(toObservable(id).pipe(
     switchMap(id => articlesService.getArticle(id, [1536, 320]))
@@ -62,7 +55,10 @@
   }
 </script>
 
-<template>
+<template
+  class="grid overflow-y-auto max-h-full"
+  [style.--height]="imageHeight()"
+>
   <div class="image">
     <img
       [ngSrc]="articleImageUrl()"
