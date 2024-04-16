@@ -43,10 +43,8 @@
   const size = nextSize();
 
   function resize() {
-    const transition = (document as any).startViewTransition(async () => {
+    (document as any).startViewTransition(async () => {
       const newSize = size.next().value;
-
-      console.log('resize', newSize);
 
       if (newSize) {
         imageHeight.set(newSize);
@@ -90,7 +88,7 @@
 <style>
   :host {
     grid-template-columns: [left-edge] 2em [left-bleed] 1fr [right-bleed] 2em [right-edge];
-    grid-template-rows: min-content min-content 1fr;
+    grid-template-rows: var(--height) min-content 1fr;
     gap: 1em 1em;
     grid-template-areas:
       'image image image'
@@ -99,7 +97,6 @@
 
     .image {
       view-transition-name: image-transition;
-      height: var(--height);
       grid-area: image;
       background: theme(colors.secondary / 5%);
     }
