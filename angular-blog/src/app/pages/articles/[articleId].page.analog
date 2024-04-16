@@ -1,23 +1,32 @@
 <script lang="ts">
   import { DOCUMENT } from '@angular/common';
   import { NgOptimizedImage } from '@angular/common' with { analog: 'imports' };
-  import { computed, inject, input, signal } from '@angular/core';
+  import {
+    ApplicationRef,
+    computed,
+    inject,
+    input,
+    signal,
+  } from '@angular/core';
   import { toObservable, toSignal } from '@angular/core/rxjs-interop';
   import { switchMap } from 'rxjs';
   import { DateTimeHelper } from '@angular-blog/dates';
   import { ArticlesService } from '../../services/articles.service';
-  import ArticleTitle from './(index)/article-title.component.analog' with {analog: 'imports'};
+  import ArticleTitle from './(index)/article-title.component.analog' with { analog: 'imports' };
 
   const articlesService = inject(ArticlesService);
   const dateTimeHelper = inject(DateTimeHelper);
   const document = inject(DOCUMENT);
+  const applicationRef = inject(ApplicationRef);
 
   const imageHeight = signal('320px');
 
-  const id = input.required<string>({alias: 'articleId'});
-  const article = toSignal(toObservable(id).pipe(
-    switchMap(id => articlesService.getArticle(id, [1536, 320]))
-  ));
+  const id = input.required<string>({ alias: 'articleId' });
+  const article = toSignal(
+    toObservable(id).pipe(
+      switchMap((id) => articlesService.getArticle(id, [1536, 320])),
+    ),
+  );
   const articleImageUrl = computed(() => {
     const imageUrl = article()?.imageUrl;
 
@@ -26,28 +35,29 @@
     return imageUrl ?? 'test';
   });
   const byline = computed(() => {
-    const byline = `${article()?.author} ${dateTimeHelper.toBlogArticleDate(article()?.date)}` ;
+    const byline = `${article()?.author} ${dateTimeHelper.toBlogArticleDate(article()?.date)}`;
 
     return byline ?? 'test';
   });
 
   const size = nextSize();
 
-
   function resize() {
-    (document as any).startViewTransition(() => {
+    const transition = (document as any).startViewTransition(async () => {
       const newSize = size.next().value;
 
       console.log('resize', newSize);
 
-      if(newSize) {
+      if (newSize) {
         imageHeight.set(newSize);
+
+        applicationRef.tick();
       }
     });
   }
 
-  function *nextSize() {
-    while(true) {
+  function* nextSize() {
+    while (true) {
       yield '240px';
       yield '160px';
       yield '320px';
@@ -59,14 +69,14 @@
   class="grid overflow-y-auto max-h-full"
   [style.--height]="imageHeight()"
 >
-  <div class="image">
+  <div class="image image-transition">
     <img
+      class="w-full h-full object-cover"
       [ngSrc]="articleImageUrl()"
+      (click)="resize()"
       width="1536"
       height="320"
       priority="true"
-      class="w-full h-full object-cover"
-      (click)="resize()"
     />
   </div>
   <div class="title flex justify-center">
@@ -79,35 +89,27 @@
 
 <style>
   :host {
-      grid-template-columns: [left-edge] 2em [left-bleed] 1fr [right-bleed] 2em [right-edge];
-      grid-template-rows: var(--height) min-content 1fr;
-      gap: 1em 1em;
-      grid-template-areas:
-    "image image image"
-    ". title ."
-    ". content .";
+    grid-template-columns: [left-edge] 2em [left-bleed] 1fr [right-bleed] 2em [right-edge];
+    grid-template-rows: min-content min-content 1fr;
+    gap: 1em 1em;
+    grid-template-areas:
+      'image image image'
+      '. title .'
+      '. content .';
 
     .image {
+      view-transition-name: image-transition;
+      height: var(--height);
       grid-area: image;
       background: theme(colors.secondary / 5%);
-      view-transition-name: image-transition;
     }
 
-    .title { grid-area: title; }
+    .title {
+      grid-area: title;
+    }
 
-    .content { grid-area: content; }
-
-    ::ng-deep {
-      ::view-transition-old(image-transition),
-      ::view-transition-new(image-transition) {
-        animation: none;
-        animation-duration: 1.5s;
-        height: 100%;
-      }
-
-      ::view-transition-new(image-transition) {
-        height: var(--height);
-      }
+    .content {
+      grid-area: content;
     }
   }
 </style>

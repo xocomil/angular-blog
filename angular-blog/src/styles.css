@@ -22,13 +22,21 @@ body {
   }
 
   @media (hover: hover) {
-    @supports (color:color-mix(in oklab,black,black)) {
+    @supports (color: color-mix(in oklab, black, black)) {
       .darken-article:hover {
-        color: color-mix(in oklab, theme(colors.base-content) 60%, theme(colors.secondary));
+        color: color-mix(
+          in oklab,
+          theme(colors.base-content) 60%,
+          theme(colors.secondary)
+        );
       }
 
       .darken-article-accent:hover {
-        color: color-mix(in oklab, theme(colors.base-content) 60%, theme(colors.accent));
+        color: color-mix(
+          in oklab,
+          theme(colors.base-content) 60%,
+          theme(colors.accent)
+        );
       }
     }
   }
@@ -40,5 +48,28 @@ body {
   .article-hover {
     @apply cursor-pointer transition hover:scale-[1.01] active:hover:scale-[.99];
   }
-}
 
+  ::view-transition-group(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-old(image-transition) {
+    /*animation: none;*/
+    /*display: none;*/
+    /*transition: max-height ease-in-out 0.5s;*/
+    animation-duration: 0.5s;
+    object-fit: contain;
+  }
+
+  ::view-transition-new(image-transition) {
+    /*animation: height-change 0.5s ease-in;*/
+    animation: 210ms ease-in-out;
+    width: 100%;
+    animation-duration: 0.5s;
+    /*transition: max-height ease-in-out 0.5s;*/
+    /*mix-blend-mode: normal;*/
+    /*contain: paint;*/
+    object-fit: cover;
+  }
+}
