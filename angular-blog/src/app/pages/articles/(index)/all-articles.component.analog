@@ -1,35 +1,24 @@
 <script lang="ts">
   import { inject } from '@angular/core';
   import { toSignal } from '@angular/core/rxjs-interop';
-  import { RouterLink } from '@angular/router' with {analog: 'imports'};
-  import ArticleBlurb from '../../../components/article-blurb/article-blurb.component.analog' with {analog: 'imports'};
+  import { RouterLink } from '@angular/router' with { analog: 'imports' };
+  import ArticleBlurb from '../../../components/article-blurb/article-blurb.component.analog' with { analog: 'imports' };
   import { ArticlesService } from '../../../services/articles.service';
 
   const articlesService = inject(ArticlesService);
   const allArticles = toSignal(articlesService.getAllArticles());
-
-  defineMetadata({
-    host: {
-      class: 'block overflow-auto h-full w-full p-8 pb-0'
-    }
-  });
 </script>
 
-<template>
+<template class="block overflow-auto h-full w-full p-8 pb-0">
   @for (article of allArticles(); track article.id) {
     <ArticleBlurb
-      [article]="article"
       class="pb-4 last:pb-0 article-hover darken-article-accent min-h-48 md:min-h-unset"
+      [article]="article"
       [routerLink]="[article.id]"
     />
-  }
-  @empty {
-    <div class="text-center text-gray-500">
-      No articles found
-    </div>
+  } @empty {
+    <div class="text-center text-gray-500">No articles found</div>
   }
 </template>
 
-<style>
-
-</style>
+<style></style>

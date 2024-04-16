@@ -1,15 +1,9 @@
 <script lang="ts">
   import { inject } from '@angular/core';
   import { Theme } from '../../../themes';
-  import {themes} from '../../../themes' with {analog: 'exposes'};
-  import { ThemeStore } from '../../data-access/theme.store' with {analog: 'providers'};
-  import { RouterLink } from '@angular/router' with {analog: 'imports'};
-
-  defineMetadata({
-    host: {
-      class: "w-full h-16 bg-primary flex p-4 items-center text-primary-content"
-    },
-  });
+  import { themes } from '../../../themes' with { analog: 'exposes' };
+  import { ThemeStore } from '../../data-access/theme.store' with { analog: 'providers' };
+  import { RouterLink } from '@angular/router' with { analog: 'imports' };
 
   const themeStore = inject(ThemeStore);
 
@@ -18,7 +12,9 @@
   }
 </script>
 
-<template>
+<template
+  class="w-full h-16 bg-primary flex p-4 items-center text-primary-content"
+>
   <div class="flex-1 justify-center cursor-pointer" routerLink="/">
     <h1>Welcome</h1>
   </div>
@@ -29,7 +25,9 @@
     >
       <option value="" disabled>Theme</option>
       @for (theme of themes; track theme) {
-        <option [value]="theme" [selected]="theme === themeStore.theme()">{{theme}}</option>
+        <option [value]="theme" [selected]="theme === themeStore.theme()">
+          {{ theme }}
+        </option>
       }
     </select>
   </div>

@@ -1,14 +1,7 @@
 <script lang="ts">
-  import Header from './(home)/header.component.analog' with {analog: 'imports'};
-  import ArticleContainer from './(home)/article-container.component.analog' with {analog: 'imports'};
-
-  defineMetadata({
-    host: {
-      class: 'block h-full w-full max-h-full'
-    }
-  })
+  import ArticleContainer from './(home)/article-container.component.analog' with { analog: 'imports' };
 </script>
 
-<template>
+<template class="block h-full w-full max-h-full">
   <ArticleContainer></ArticleContainer>
 </template>
