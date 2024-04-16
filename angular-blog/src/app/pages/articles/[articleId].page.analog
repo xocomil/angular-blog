@@ -87,8 +87,10 @@
 
 <style>
   :host {
+    --height-change-duration: 0.5s;
+
     grid-template-columns: [left-edge] 2em [left-bleed] 1fr [right-bleed] 2em [right-edge];
-    grid-template-rows: var(--height) min-content 1fr;
+    grid-template-rows: max-content min-content 1fr;
     gap: 1em 1em;
     grid-template-areas:
       'image image image'
@@ -97,6 +99,8 @@
 
     .image {
       view-transition-name: image-transition;
+      transition: height var(--height-change-duration) ease-in-out;
+      height: var(--height);
       grid-area: image;
       background: theme(colors.secondary / 5%);
     }
