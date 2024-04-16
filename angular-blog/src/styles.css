@@ -48,16 +48,4 @@ body {
   .article-hover {
     @apply cursor-pointer transition hover:scale-[1.01] active:hover:scale-[.99];
   }
-
-  ::view-transition-group(*) {
-    animation-duration: var(--height-change-duration);
-  }
-
-  ::view-transition-old(image-transition) {
-    object-fit: contain;
-  }
-
-  ::view-transition-new(image-transition) {
-    object-fit: cover;
-  }
 }
