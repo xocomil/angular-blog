@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-blog/dates": ["libs/dates/src/index.ts"]
+      "@angular-blog/dates": ["libs/dates/src/index.ts"],
+      "@angular-blog/rxjs-operators": ["libs/rxjs-operators/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
