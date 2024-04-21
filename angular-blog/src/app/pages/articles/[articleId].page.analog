@@ -1,16 +1,24 @@
 <script lang="ts">
   import { DOCUMENT } from '@angular/common';
+  import { JsonPipe } from '@angular/common' with { analog: 'imports' };
   import { NgOptimizedImage } from '@angular/common' with { analog: 'imports' };
   import {
     ApplicationRef,
+    ChangeDetectorRef,
     computed,
+    ElementRef,
     inject,
     input,
     signal,
   } from '@angular/core';
-  import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-  import { switchMap } from 'rxjs';
+  import {
+    takeUntilDestroyed,
+    toObservable,
+    toSignal,
+  } from '@angular/core/rxjs-interop';
+  import { debounceTime, fromEvent, switchMap, tap } from 'rxjs';
   import { DateTimeHelper } from '@angular-blog/dates';
+  import { logObservable } from '@angular-blog/rxjs-operators';
   import { ArticlesService } from '../../services/articles.service';
   import ArticleTitle from './(index)/article-title.component.analog' with { analog: 'imports' };
 
@@ -18,6 +26,8 @@
   const dateTimeHelper = inject(DateTimeHelper);
   const document = inject(DOCUMENT);
   const applicationRef = inject(ApplicationRef);
+  const elementRef = inject(ElementRef);
+  const cdr = inject(ChangeDetectorRef);
 
   const imageHeight = signal('320px');
 
@@ -40,26 +50,73 @@
     return byline ?? 'test';
   });
 
-  const size = nextSize();
+  const sizes = {
+    small: 160,
+    medium: 240,
+    large: 320,
+  } as const;
 
-  function resize() {
-    (document as any).startViewTransition(async () => {
-      const newSize = size.next().value;
+  type Sizes = keyof typeof sizes;
 
-      if (newSize) {
-        imageHeight.set(newSize);
+  let lastKnownScrollPosition = 0;
+  let currentSize: Sizes = 'large';
+  let ticking = false;
+  const isSticky = signal(true);
 
-        applicationRef.tick();
-      }
+  fromEvent(elementRef.nativeElement, 'scroll')
+    .pipe(
+      logObservable('scrollEvent'),
+      takeUntilDestroyed(),
+      logObservable('scroll after destroyed'),
+    )
+    .subscribe({
+      next: (event: Event) => {
+        console.log('subscribe scroll event', event);
+
+        if (isScrollEvent(event)) {
+          console.log('scroll event target', event.target);
+
+          const currentPosition = event.target.scrollTop;
+
+          const direction =
+            currentPosition > lastKnownScrollPosition ? 'down' : 'up';
+
+          lastKnownScrollPosition = currentPosition;
+          if (!ticking) {
+            setTimeout(() => {
+              window.requestAnimationFrame(() => {
+                if (direction === 'down') {
+                  if (currentSize !== 'small') {
+                    if (currentSize === 'large') {
+                      currentSize = 'medium';
+                    } else {
+                      currentSize = 'small';
+                      isSticky.set(false);
+                    }
+
+                    imageHeight.set(`${sizes[currentSize]}px`);
+
+                    elementRef.nativeElement.scrollTop = 0;
+                  }
+                }
+
+                ticking = false;
+              });
+            }, 250);
+
+            ticking = true;
+          }
+        }
+      },
+      complete: () => {
+        console.log('subscribe scroll complete');
+      },
     });
-  }
 
-  function* nextSize() {
-    while (true) {
-      yield '240px';
-      yield '160px';
-      yield '320px';
-    }
+  type ScrollEvent = { type: 'scroll'; target: HTMLElement };
+
+  function isScrollEvent(event: { type: string }): event is ScrollEvent {
+    return event.type === 'scroll';
   }
 </script>
 
@@ -67,18 +124,21 @@
   class="grid overflow-y-auto max-h-full"
   [style.--height]="imageHeight()"
 >
-  <div class="image image-transition">
+  <div class="title flex justify-center">
+    <ArticleTitle [title]="article()?.title" [byline]="byline()" />
+  </div>
+  <div
+    class="image image-transition"
+    [class.sticky]="isSticky()"
+    [class.top-0]="isSticky()"
+  >
     <img
       class="w-full h-full object-cover"
       [ngSrc]="articleImageUrl()"
-      (click)="resize()"
       width="1536"
       height="320"
       priority="true"
     />
-  </div>
-  <div class="title flex justify-center">
-    <ArticleTitle [title]="article()?.title" [byline]="byline()" />
   </div>
   <div class="content">
     {{ article()?.content }}
