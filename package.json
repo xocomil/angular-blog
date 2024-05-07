@@ -49,15 +49,15 @@
     "@angular/language-service": "17.3.5",
     "@faker-js/faker": "^8.4.1",
     "@ngrx/eslint-plugin": "17.2.0",
-    "@nx/angular": "18.3.3",
-    "@nx/cypress": "18.3.3",
-    "@nx/devkit": "18.3.3",
-    "@nx/eslint": "18.3.3",
-    "@nx/eslint-plugin": "18.3.3",
-    "@nx/jest": "18.3.3",
-    "@nx/js": "18.3.3",
-    "@nx/vite": "18.3.3",
-    "@nx/workspace": "18.3.3",
+    "@nx/angular": "19.0.1",
+    "@nx/cypress": "19.0.1",
+    "@nx/devkit": "19.0.1",
+    "@nx/eslint": "19.0.1",
+    "@nx/eslint-plugin": "19.0.1",
+    "@nx/jest": "19.0.1",
+    "@nx/js": "19.0.1",
+    "@nx/vite": "19.0.1",
+    "@nx/workspace": "19.0.1",
     "@schematics/angular": "17.3.5",
     "@swc-node/register": "1.9.0",
     "@swc/core": "~1.4.16",
@@ -76,7 +76,7 @@
     "jest-environment-jsdom": "^29.4.1",
     "jest-preset-angular": "~14.0.3",
     "jsdom": "^24.0.0",
-    "nx": "18.3.3",
+    "nx": "19.0.1",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-organize-attributes": "^1.0.0",
@@ -95,3 +95,4 @@
     "node": "20.12.1"
   }
 }
+
