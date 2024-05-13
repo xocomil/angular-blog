@@ -21,7 +21,13 @@
       "defaultConfiguration": "production",
       "configurations": {
         "development": {
-          "mode": "development"
+          "mode": "development",
+          "fileReplacements": [
+            {
+              "replace": "angular-blog/src/environments/environment.ts",
+              "with": "angular-blog/src/environments/environment.development.ts"
+            }
+          ]
         },
         "production": {
           "sourcemap": false,
@@ -54,7 +60,9 @@
     },
     "test": {
       "executor": "@analogjs/platform:vitest",
-      "outputs": ["{projectRoot}/coverage"]
+      "outputs": [
+        "{projectRoot}/coverage"
+      ]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
