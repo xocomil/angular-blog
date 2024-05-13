@@ -53,6 +53,9 @@ dependencies:
   '@trpc/server':
     specifier: ^10.45.2
     version: 10.45.2
+  dotenv:
+    specifier: ^16.4.5
+    version: 16.4.5
   front-matter:
     specifier: ^4.0.2
     version: 4.0.2
@@ -6226,7 +6229,7 @@ packages:
     dependencies:
       chokidar: 3.5.3
       defu: 6.1.4
-      dotenv: 16.4.1
+      dotenv: 16.4.5
       giget: 1.2.1
       jiti: 1.21.0
       mlly: 1.5.0
@@ -7712,10 +7715,9 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /dotenv@16.4.1:
-    resolution: {integrity: sha512-CjA3y+Dr3FyFDOAMnxZEGtnW9KBR2M0JvvUtXNW+dYJL5ROWxP9DUHCwgFqpMk0OXCc0ljhaNTr2w/kutYIcHQ==}
+  /dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
-    dev: true
 
   /duplexer@0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}

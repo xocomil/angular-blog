@@ -21,6 +21,7 @@
     "@ngrx/signals": "17.2.0",
     "@trpc/client": "^10.45.2",
     "@trpc/server": "^10.45.2",
+    "dotenv": "^16.4.5",
     "front-matter": "^4.0.2",
     "isomorphic-fetch": "^3.0.0",
     "luxon": "^3.4.4",
@@ -95,4 +96,3 @@
     "node": "20.12.1"
   }
 }
-
