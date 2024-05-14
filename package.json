@@ -21,6 +21,7 @@
     "@ngrx/signals": "17.2.0",
     "@trpc/client": "^10.45.2",
     "@trpc/server": "^10.45.2",
+    "contentful": "^10.10.0",
     "dotenv": "^16.4.5",
     "front-matter": "^4.0.2",
     "isomorphic-fetch": "^3.0.0",

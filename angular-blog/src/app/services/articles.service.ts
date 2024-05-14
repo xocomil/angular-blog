@@ -1,12 +1,15 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { faker } from '@faker-js/faker';
-import { Observable, of } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { ArticleModel, createTestArticle } from '../models/article.model';
+import { ContentfulService } from './contentful.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticlesService {
+  readonly #contentfulService = inject(ContentfulService);
+
   getArticle(
     articleId: string,
     imageSize: [height: number, width: number] = [250, 250],
@@ -36,11 +39,8 @@ export class ArticlesService {
   }
 
   getAllArticles(): Observable<ArticleModel[]> {
-    return of(
-      Array.from(
-        { length: faker.number.int({ min: 15, max: 30 }) },
-        createTestArticle,
-      ),
-    );
+    console.log('Getting articles from Contentful');
+
+    return from(this.#contentfulService.getArticles());
   }
 }
