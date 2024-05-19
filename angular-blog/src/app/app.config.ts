@@ -8,6 +8,7 @@ import {
   withViewTransitions,
 } from '@angular/router';
 import { provideTrpcClient } from '../trpc-client';
+import { provideWindow } from './models/window.token';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,5 +17,6 @@ export const appConfig: ApplicationConfig = {
     provideFileRouter(withComponentInputBinding(), withViewTransitions()),
     provideHttpClient(withFetch()),
     provideTrpcClient(),
+    provideWindow(),
   ],
 };

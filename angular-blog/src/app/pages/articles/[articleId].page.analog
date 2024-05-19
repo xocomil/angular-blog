@@ -3,6 +3,7 @@
   import { JsonPipe } from '@angular/common' with { analog: 'imports' };
   import { NgOptimizedImage } from '@angular/common' with { analog: 'imports' };
   import {
+    afterNextRender,
     ApplicationRef,
     ChangeDetectorRef,
     computed,
@@ -28,6 +29,7 @@
   const applicationRef = inject(ApplicationRef);
   const elementRef = inject(ElementRef);
   const cdr = inject(ChangeDetectorRef);
+  // const windowRef = document.defaultView;
 
   const imageHeight = signal('320px');
 
@@ -84,7 +86,7 @@
           lastKnownScrollPosition = currentPosition;
           if (!ticking) {
             setTimeout(() => {
-              window.requestAnimationFrame(() => {
+              afterNextRender(() => {
                 if (direction === 'down') {
                   if (currentSize !== 'small') {
                     if (currentSize === 'large') {

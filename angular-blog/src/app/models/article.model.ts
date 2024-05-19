@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { EntryFieldTypes } from 'contentful';
 
 export type ArticleModel = {
   id: string;
@@ -7,6 +8,22 @@ export type ArticleModel = {
   content: string;
   date: Date;
   imageUrl: string;
+};
+
+export type ContentfulArticleModel = {
+  fields: {
+    title: EntryFieldTypes.Text;
+    content: EntryFieldTypes.Text;
+    author: EntryFieldTypes.Object<{
+      fields: {
+        firstName: EntryFieldTypes.Text;
+        lastName: EntryFieldTypes.Text;
+      };
+      contentTypeId: 'authors';
+    }>;
+    publishedDate: EntryFieldTypes.Date;
+  };
+  contentTypeId: 'blogPosts';
 };
 
 export function createTestArticle(

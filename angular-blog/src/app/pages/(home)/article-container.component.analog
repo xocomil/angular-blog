@@ -5,7 +5,6 @@
   import { ArticlesService } from '../../services/articles.service';
   import SecondaryArticle from './secondary-article.component.analog' with { analog: 'imports' };
   import { RouterLink } from '@angular/router' with { analog: 'imports' };
-  import { environment } from '../../../environments/environment' with { analog: 'exposes' };
 
   const articlesService = inject(ArticlesService);
 
