@@ -7,6 +7,13 @@ import {
   createTestArticle,
 } from '../models/article.model';
 
+const maxCacheAgeMs = 300_000 as const; // 5 minutes
+
+export type MainArticles = {
+  main: ArticleModel | undefined;
+  highlights: ArticleModel[];
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -19,12 +26,40 @@ export class ContentfulService {
     },
   } as const;
 
+  #lastCheck: Date | undefined;
+  #cache: ArticleModel[] = [];
+
   readonly #client = createClient({
     space: this.#config.space,
     accessToken: this.#config.key,
   });
 
+  #getCachedArticles(): ArticleModel[] {
+    if (!this.#lastCheck) {
+      return [];
+    }
+
+    const now = new Date();
+
+    if (now.getTime() - this.#lastCheck.getTime() > maxCacheAgeMs) {
+      return [];
+    }
+
+    return this.#cache;
+  }
+
+  #setCachedArticles(articles: ArticleModel[]): void {
+    this.#cache = articles;
+    this.#lastCheck = new Date();
+  }
+
   async getArticles(query?: object): Promise<ArticleModel[]> {
+    const cached = this.#getCachedArticles();
+
+    if (cached.length > 0) {
+      return cached;
+    }
+
     const res = await this.#client.getEntries<ContentfulArticleModel>(
       Object.assign(
         {
@@ -50,6 +85,14 @@ export class ContentfulService {
       });
     });
     console.log('mapped', mapped);
+    this.#setCachedArticles(mapped);
     return mapped;
+  }
+
+  async getMainArticles(): Promise<MainArticles> {
+    return await this.getArticles().then((articles) => ({
+      main: articles[0],
+      highlights: articles.slice(1, 6),
+    }));
   }
 }
