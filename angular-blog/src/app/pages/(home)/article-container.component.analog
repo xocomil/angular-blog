@@ -1,6 +1,7 @@
 <script lang="ts">
   import { inject } from '@angular/core';
-  import { toSignal } from '@angular/core/rxjs-interop';
+  import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+  import { map } from 'rxjs';
   import ArticleBlurb from '../../components/article-blurb/article-blurb.component.analog' with { analog: 'imports' };
   import { ArticlesService } from '../../services/articles.service';
   import SecondaryArticle from './secondary-article.component.analog' with { analog: 'imports' };
@@ -8,18 +9,28 @@
 
   const articlesService = inject(ArticlesService);
 
-  const mainArticle = toSignal(articlesService.getMainArticle());
-  const articles = toSignal(articlesService.getHighlightArticles());
+  const mainArticle$ = articlesService
+    .getMainArticles()
+    .pipe(takeUntilDestroyed());
+
+  const mainArticle = toSignal(mainArticle$.pipe(map(({ main }) => main)));
+  const articles = toSignal(
+    mainArticle$.pipe(map(({ highlights }) => highlights)),
+  );
 </script>
 
 <template
   class="grid grid-cols-1 md:grid-cols-2 auto-rows-[33%] md:grid-rows-article-home gap-4 px-4 pb-4 md:px-12 pt-4 h-full w-full max-h-full overflow-y-auto stable-gutters"
 >
-  <ArticleBlurb
-    class="md:col-span-2 article-hover darken-article"
-    [article]="mainArticle()"
-    [routerLink]="['articles', mainArticle().id]"
-  ></ArticleBlurb>
+  @if (mainArticle()) {
+    <ArticleBlurb
+      class="md:col-span-2 article-hover darken-article"
+      [article]="mainArticle()"
+      [routerLink]="['articles', mainArticle().id]"
+    ></ArticleBlurb>
+  } @else {
+    <h3>There are no articles to display</h3>
+  }
 
   @for (article of articles(); track article.id) {
     <SecondaryArticle
@@ -27,5 +38,7 @@
       [article]="article"
       [routerLink]="['articles', article.id]"
     ></SecondaryArticle>
+  } @empty {
+    <p>Come back later for more content!</p>
   }
 </template>

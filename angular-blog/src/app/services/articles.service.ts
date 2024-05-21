@@ -1,8 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { faker } from '@faker-js/faker';
 import { from, Observable, of } from 'rxjs';
 import { ArticleModel, createTestArticle } from '../models/article.model';
-import { ContentfulService } from './contentful.service';
+import { ContentfulService, MainArticles } from './contentful.service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,17 +24,8 @@ export class ArticlesService {
     );
   }
 
-  getMainArticle(): Observable<ArticleModel> {
-    return of(createTestArticle());
-  }
-
-  getHighlightArticles(): Observable<ArticleModel[]> {
-    return of(
-      Array.from(
-        { length: faker.number.int({ min: 3, max: 4 }) },
-        createTestArticle,
-      ),
-    );
+  getMainArticles(): Observable<MainArticles> {
+    return from(this.#contentfulService.getMainArticles());
   }
 
   getAllArticles(): Observable<ArticleModel[]> {
