@@ -4,6 +4,7 @@
   import { computed, inject, input } from '@angular/core';
   import { BreakpointService } from '../../services/breakpoint.service' with { analog: 'providers' };
   import { ArticleModel } from '../../models/article.model';
+  import { MarkdownComponent } from '@analogjs/content' with { analog: 'imports' };
 
   const breakpointService = inject(BreakpointService);
   const article = input.required<ArticleModel>();
@@ -34,7 +35,7 @@
   <div class="content md:pr-4 flex flex-col max-h-full overflow-hidden">
     <div class="opacity-75 text-xs italic">{{ articleDate() }}</div>
     <div class="flex-1 main-article-blurb relative overflow-hidden">
-      <p>{{ article().content }}</p>
+      <analog-markdown [content]="article().content" />
       <div
         class="main-article-gradient absolute bottom-0 left-0 max-h-14 min-h-14 min-w-full z-10"
       ></div>
