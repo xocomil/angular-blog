@@ -2,6 +2,7 @@
   import { computed, inject, input } from '@angular/core';
   import { DateTimeHelper } from '@angular-blog/dates';
   import { ArticleModel } from '../../models/article.model';
+  import { MarkdownComponent } from '@analogjs/content' with { analog: 'imports' };
 
   const article = input.required<ArticleModel>();
   const dateTimeHelper = inject(DateTimeHelper);
@@ -19,7 +20,7 @@
   </div>
   <div class="opacity-75 text-xs italic">{{ articleDate() }}</div>
   <div class="flex-1 article-blurb relative overflow-hidden">
-    <p>{{ article().content }}</p>
+    <analog-markdown [content]="article().content" />
     <div
       class="article-gradient absolute bottom-0 left-0 max-h-8 min-h-8 min-w-full z-10"
     ></div>
