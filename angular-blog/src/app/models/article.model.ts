@@ -61,6 +61,19 @@ export function createTestArticle(
     date: date ?? faker.date.recent({ days: 30 }),
     imageUrl:
       imageUrl ??
-      `https://picsum.photos/seed/${faker.word.noun()}/${imageWidth}/${imageHeight}`,
+      `https://picsum.photos/seed/${getPicSumSeed(title, content)}/${imageWidth}/${imageHeight}`,
   };
+}
+
+function getPicSumSeed(title?: string, content?: string): string {
+  if (!title || !content) {
+    return faker.word.noun();
+  }
+
+  return [title ?? '', content ?? '']
+    .join('')
+    .slice(0, 64)
+    .split('')
+    .reduce((acc, char) => acc + char.charCodeAt(0), 0)
+    .toString(36);
 }
