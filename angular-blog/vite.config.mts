@@ -28,7 +28,9 @@ export default defineConfig(({ mode }) => {
         ssr: false,
         vite: {
           experimental: {
-            supportAnalogFormat: true,
+            supportAnalogFormat: {
+              include: ['src/app/components/**/*'],
+            },
           },
         },
       }),

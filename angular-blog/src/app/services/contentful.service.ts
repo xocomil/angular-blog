@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createClient } from 'contentful';
+import * as contentful from 'contentful';
 import { environment } from '../../environments/environment';
 import {
   ArticleModel,
@@ -29,7 +29,7 @@ export class ContentfulService {
   #lastCheck: Date | undefined;
   #cache: ArticleModel[] = [];
 
-  readonly #client = createClient({
+  readonly #client = contentful.createClient({
     space: this.#config.space,
     accessToken: this.#config.key,
   });
