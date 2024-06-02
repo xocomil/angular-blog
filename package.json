@@ -46,7 +46,7 @@
     "@angular-eslint/eslint-plugin": "17.4.1",
     "@angular-eslint/eslint-plugin-template": "17.4.1",
     "@angular-eslint/template-parser": "17.4.1",
-    "@angular/cli": "~18.0.0",
+    "@angular/cli": "18.0.2",
     "@angular/compiler-cli": "18.0.1",
     "@angular/language-service": "18.0.1",
     "@faker-js/faker": "^8.4.1",
