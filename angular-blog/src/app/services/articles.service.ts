@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { from, Observable, of } from 'rxjs';
-import { ArticleModel, createTestArticle } from '../models/article.model';
+import { from, Observable } from 'rxjs';
+import { ArticleModel } from '../models/article.model';
 import { ContentfulService, MainArticles } from './contentful.service';
 
 @Injectable({
@@ -12,16 +12,8 @@ export class ArticlesService {
   getArticle(
     articleId: string,
     imageSize: [height: number, width: number] = [250, 250],
-  ): Observable<ArticleModel> {
-    const [imageWidth, imageHeight] = imageSize;
-
-    return of(
-      createTestArticle({
-        id: articleId,
-        imageHeight,
-        imageWidth,
-      }),
-    );
+  ): Observable<ArticleModel | undefined> {
+    return from(this.#contentfulService.getArticle(articleId, imageSize));
   }
 
   getMainArticles(): Observable<MainArticles> {

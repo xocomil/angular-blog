@@ -21,7 +21,10 @@
   import { DateTimeHelper } from '@angular-blog/dates';
   import { logObservable } from '@angular-blog/rxjs-operators';
   import { ArticlesService } from '../../services/articles.service';
-  import ArticleTitle from './(index)/article-title.component.analog' with { analog: 'imports' };
+  import ArticleTitle from './(index)/article-title.component.analog' with { analog:
+    'imports' };
+  import { MarkdownComponent } from '@analogjs/content' with { analog:
+    'imports' };
 
   const articlesService = inject(ArticlesService);
   const dateTimeHelper = inject(DateTimeHelper);
@@ -143,7 +146,11 @@
     />
   </div>
   <div class="content">
-    {{ article()?.content }}
+    @if (article()?.content) {
+      <analog-markdown [content]="article()?.content" />
+    } @else {
+      <h3>Article not found!</h3>
+    }
   </div>
 </template>
 

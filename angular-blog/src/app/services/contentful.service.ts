@@ -95,4 +95,34 @@ export class ContentfulService {
       highlights: articles.slice(1, 6),
     }));
   }
+
+  async getArticle(
+    articleId: string,
+    imageSize: [height: number, width: number] = [250, 250],
+  ): Promise<ArticleModel | undefined> {
+    const response =
+      await this.#client.getEntry<ContentfulArticleModel>(articleId);
+
+    if (!response) {
+      return undefined;
+    }
+
+    const [imageWidth, imageHeight] = imageSize;
+
+    const author = response.fields.author;
+
+    const article = createTestArticle({
+      id: response.sys.id,
+      title: response.fields.title,
+      content: response.fields.content,
+      date: new Date(response.fields.publishedDate),
+      author: author
+        ? `${author.fields.firstName} ${author.fields.lastName}`
+        : 'Unknown',
+      imageHeight,
+      imageWidth,
+    });
+    console.log('article', article);
+    return article;
+  }
 }
