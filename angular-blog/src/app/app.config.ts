@@ -11,7 +11,6 @@ import {
   withComponentInputBinding,
   withViewTransitions,
 } from '@angular/router';
-import { provideTrpcClient } from '../trpc-client';
 import { provideWindow } from './models/window.token';
 
 export const appConfig: ApplicationConfig = {
@@ -22,7 +21,6 @@ export const appConfig: ApplicationConfig = {
     provideDateTimeHelper(),
     provideFileRouter(withComponentInputBinding(), withViewTransitions()),
     provideHttpClient(withFetch()),
-    provideTrpcClient(),
     provideWindow(),
   ],
 };

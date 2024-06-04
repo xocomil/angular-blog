@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
     publicDir: 'src/public',
 
     ssr: {
-      noExternal: ['@analogjs/trpc', '@trpc/server'],
+      noExternal: [],
     },
 
     build: {
