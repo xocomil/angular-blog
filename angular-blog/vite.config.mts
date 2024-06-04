@@ -6,7 +6,7 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  return {
+  const test = {
     publicDir: 'src/public',
 
     ssr: {
@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
     },
 
     build: {
-      target: ['es2020'],
+      target: ['es2022'],
     },
     plugins: [
       analog({
@@ -28,9 +28,7 @@ export default defineConfig(({ mode }) => {
         ssr: false,
         vite: {
           experimental: {
-            supportAnalogFormat: {
-              include: ['src/app/components/**/*'],
-            },
+            supportAnalogFormat: true,
           },
         },
       }),
@@ -52,4 +50,8 @@ export default defineConfig(({ mode }) => {
       'import.meta.vitest': mode !== 'production',
     },
   };
+
+  // console.log('test', test);
+
+  return test;
 });
