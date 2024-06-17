@@ -1,4 +1,5 @@
 import { provideContent, withMarkdownRenderer } from '@analogjs/content';
+import { withPrismHighlighter } from '@analogjs/content/prism-highlighter';
 import { provideFileRouter } from '@analogjs/router';
 import { provideDateTimeHelper } from '@angular-blog/dates';
 import { provideHttpClient, withFetch } from '@angular/common/http';
@@ -17,7 +18,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideExperimentalZonelessChangeDetection(),
     provideClientHydration(),
-    provideContent(withMarkdownRenderer()),
+    provideContent(withMarkdownRenderer(), withPrismHighlighter()),
     provideDateTimeHelper(),
     provideFileRouter(withComponentInputBinding(), withViewTransitions()),
     provideHttpClient(withFetch()),
