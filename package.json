@@ -47,7 +47,7 @@
     "@angular/cli": "17.3.5",
     "@angular/compiler-cli": "17.3.5",
     "@angular/language-service": "17.3.5",
-    "@faker-js/faker": "^8.4.1",
+    "@faker-js/faker": "^10.0.0",
     "@ngrx/eslint-plugin": "17.2.0",
     "@nx/angular": "18.3.3",
     "@nx/cypress": "18.3.3",
