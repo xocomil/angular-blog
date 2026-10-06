@@ -16,7 +16,7 @@
     "@angular/forms": "17.3.5",
     "@angular/platform-browser": "17.3.5",
     "@angular/platform-browser-dynamic": "17.3.5",
-    "@angular/platform-server": "17.3.5",
+    "@angular/platform-server": "18.2.14",
     "@angular/router": "17.3.5",
     "@ngrx/signals": "17.2.0",
     "@trpc/client": "^10.45.2",
